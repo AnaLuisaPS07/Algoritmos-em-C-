@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main() {
+    // Declaração de variáveis
+    int idade = 19;
+    
+    // Exibindo mensagem na tela
+    printf("Hello, World!\n");
+    
+    // Operações com variáveis
+    printf("Você tem %d anos.\n", idade);
+
+    // Retorno de sucesso
+    return 0;
+}
