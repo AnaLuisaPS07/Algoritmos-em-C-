@@ -1,0 +1,13 @@
+• OBS: o operador “/” (divisão) terá um resultado inteiro
+se os dois operandos forem inteiros. Para um resultado
+real, um dos dois operandos deve ser real (ou os dois)
+
+Exemplo:
+int X,Y;
+float Z,U,T;
+X=2; Y=3; U=3;
+Z=X/Y;
+T=X/U;
+
+// Z terá o valor zero
+// T terá o valor 0.666667
