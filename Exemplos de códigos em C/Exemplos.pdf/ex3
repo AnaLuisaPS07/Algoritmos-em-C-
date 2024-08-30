@@ -1,3 +1,5 @@
+//Ler 3 notas e faz a média (na mesma linha de código)
+
 #include <stdio.h>
 #include <stdlib.h>
 
