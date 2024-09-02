@@ -1,0 +1,57 @@
+Exercício para teste de utilização da plataforma GDBOnline
+     Dois automóveis partem de duas cidades A e B ligadas por uma rodovia. O primeiro automóvel parte da cidade A em velocidade constante com destino a cidade B e o segundo parte da cidade B em velocidade constante com destino a cidade A. Considere que os dois automóveis partem simultaneamente. Elabore um programa usando a linguagem C para receber a distância que separa as cidades, a velocidade do primeiro automóvel e a velocidade do segundo automóvel e determinar o momento e o local em que os automóveis se encontram. Considere que a distância entre as cidades deve ser informada em quilômetros (Km) e as velocidades dos automóveis em quilômetros por hora (Km/h). Considere também que a referência para o ponto de encontro dos automóveis deve ser a distância com relação à cidade A. Os valores de entrada devem ser números naturais.
+
+ 
+
+Considerações sobre as entradas e saídas e respectivas formatações:
+
+·         A distância entres as cidades deve ser valor real maior do que zero com até uma casa decimal
+
+·         As velocidades dos automóveis devem sem valores inteiros maiores do que zero
+
+·         O local do encontro deve ser valor real com duas casas decimais de precisão
+
+·         O momento do encontro deve ser valor real com duas casas decimais de precisão
+
+                
+
+Exemplos de formatação para validação (teste) automática
+
+ 
+
+            Exemplo 1
+
+Entre com a distancia entre as cidades A e B: 600
+
+Entre com a velocidade do automovel que parte de A para B: 100
+
+Entre com a velocidade do automovel que parte de B para A: 120
+
+Momento do encontro: 2.73 horas apos a partida dos automoveis
+
+Local do encontro: 272.73 Km da cidade A
+
+ 
+                     Exemplo 2
+
+Entre com a distancia entre as cidades A e B: 0
+
+A distancia entre as cidades deve ser maior do que zero
+
+Entre com a distancia entre as cidades A e B: 200
+
+Entre com a velocidade do automovel que parte de A para B: 0
+
+A velocidade do automovel deve ser maior do que zero
+
+Entre com a velocidade do automovel que parte de A para B: 50
+
+Entre com a velocidade do automovel que parte de B para A: 0
+
+A velocidade do automovel deve ser maior do que zero
+
+Entre com a velocidade do automovel que parte de B para A: 50
+
+Momento do encontro: 2.00 horas apos a partida dos automoveis
+
+Local do encontro: 100.00 Km da cidade A
