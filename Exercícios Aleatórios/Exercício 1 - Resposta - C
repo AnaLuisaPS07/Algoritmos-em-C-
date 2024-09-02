@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+int main() {
+    float distancia, localEncontro, momentoEncontro;
+    int carroA, carroB;
+
+    momentoEncontro = 0;
+    localEncontro = 0;
+
+    // Validação da distância
+    do {
+        printf("Entre com a distancia entre as cidades A e B: ");
+        scanf("%f", &distancia);
+
+        if (distancia <= 0) {
+            printf("A distancia entre as cidades deve ser maior do que zero\n");
+        }
+    } while (distancia <= 0);
+
+    // Validação da velocidade do automóvel A
+    do {
+        printf("Entre com a velocidade do automovel que parte de A para B: ");
+        scanf("%d", &carroA);
+
+        if (carroA <= 0) {
+            printf("A velocidade do automovel deve ser maior do que zero\n");
+        }
+    } while (carroA <= 0);
+
+    // Validação da velocidade do automóvel B
+    do {
+        printf("Entre com a velocidade do automovel que parte de B para A: ");
+        scanf("%d", &carroB);
+
+        if (carroB <= 0) {
+            printf("A velocidade do automovel deve ser maior do que zero\n");
+        }
+    } while (carroB <= 0);
+
+    // Cálculo do tempo até o encontro
+    momentoEncontro = distancia / (carroA + carroB);
+
+    // Cálculo do local do encontro em relação à cidade A
+    localEncontro = carroA * momentoEncontro;
+
+    // Saída dos resultados
+    printf("Momento do encontro: %.2f horas apos a partida dos automoveis\n", momentoEncontro);
+    printf("Local do encontro: %.2f Km da cidade A\n", localEncontro);
+
+    return 0;
+}
