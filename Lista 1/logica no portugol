@@ -29,7 +29,8 @@ inicio
 
         // Inicialmente, assumimos que todas as notas são iguais
         se (n1 = n2) e (n2 = n3) e (n3 = n4) entao
-            media <- (n1 * 2.5 + n2 * 2.5 + n3 * 2.5 + n4 * 2.5) / 10
+            media <- (n1 * 2.5 + n2 * 2.5 + n3 * 2.5 + n4 * 2.5) / 10  //TODAS IGUAIS
+
         senao
             // Identificar maior e menor nota
             se (n1 >= n2) e (n1 >= n3) e (n1 >= n4) entao
@@ -37,17 +38,22 @@ inicio
                 se (n2 <= n3) e (n2 <= n4) entao
                     // n2 é a menor
                     media <- (n1 * 4 + n2 * 1 + n3 * 3 + n4 * 3) / 11
+
                 senao
                     media <- (n1 * 4 + n2 * 2 + n3 * 2 + n4 * 2) / 10
                 fimse
+
+
             senao
                 // Se n2 é a maior
                 se (n2 >= n1) e (n2 >= n3) e (n2 >= n4) entao
                     se (n1 <= n3) e (n1 <= n4) entao
                         media <- (n2 * 4 + n1 * 1 + n3 * 3 + n4 * 3) / 11
+
                     senao
                         media <- (n2 * 4 + n1 * 2 + n3 * 2 + n4 * 2) / 10
                     fimse
+
                 senao
                     // Se n3 é a maior
                     se (n3 >= n1) e (n3 >= n2) e (n3 >= n4) entao
@@ -56,6 +62,7 @@ inicio
                         senao
                             media <- (n3 * 4 + n1 * 2 + n2 * 2 + n4 * 2) / 10
                         fimse
+
                     senao
                         // n4 é a maior
                         se (n1 <= n2) e (n1 <= n3) entao
@@ -68,6 +75,7 @@ inicio
             fimse
         fimse
 
+
         mediaAcumulada <- mediaAcumulada + media
 
 
@@ -75,10 +83,12 @@ inicio
         se (c = 1) entao
             maiorMedia <- media
             menorMedia <- media
+
         senao
             se (media > maiorMedia) entao
                 maiorMedia <- media
             fimse
+
             se (media < menorMedia) entao
                 menorMedia <- media
             fimse
