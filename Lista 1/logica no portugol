@@ -156,6 +156,8 @@ inicio
       Se (n1 = n2) e (n2 = n3) e (n3 = n4) entao
          // Todas as notas são iguais
          media <- (n1 * 2.5 + n2 * 2.5 + n3 * 2.5 + n4 * 2.5) / 10
+
+
       Senao
          Se (n1 = n2) e (n2 = n3) entao
             // Três notas iguais e uma diferente
@@ -164,27 +166,34 @@ inicio
             Senao
                media <- (n1 * 2 + n2 * 2 + n3 * 2 + n4 * 4) / 10 // n4 é maior
             FimSe
+
+
          SenaoSe (n2 = n3) e (n3 = n4) entao
             Se (n2 > n1) entao
                media <- (n1 * 1 + n2 * 3 + n3 * 3 + n4 * 3) / 10 // n1 é menor
             Senao
                media <- (n1 * 4 + n2 * 2 + n3 * 2 + n4 * 2) / 10 // n1 é maior
             FimSe
+
+
          Senao
             // Todas as notas diferentes
             Se (n1 >= n2) e (n1 >= n3) e (n1 >= n4) entao
                Se (n2 >= n3) e (n2 >= n4) entao
                   Se (n3 >= n4) entao
                      media <- (n1 * 4 + n2 * 3 + n3 * 2 + n4 * 1) / 10
+
                   Senao
                      media <- (n1 * 4 + n2 * 3 + n3 * 1 + n4 * 2) / 10
                   FimSe
+
                SenaoSe (n3 >= n2) e (n3 >= n4) entao
                   Se (n2 >= n4) entao
                      media <- (n1 * 4 + n2 * 2 + n3 * 3 + n4 * 1) / 10
                   Senao
                      media <- (n1 * 4 + n2 * 1 + n3 * 3 + n4 * 2) / 10
                   FimSe
+
                Senao
                   Se (n2 >= n3) entao
                      media <- (n1 * 4 + n2 * 2 + n3 * 1 + n4 * 3) / 10
@@ -192,12 +201,16 @@ inicio
                      media <- (n1 * 4 + n2 * 1 + n3 * 2 + n4 * 3) / 10
                   FimSe
                FimSe
+
             Senao
                // Outras combinações de notas
                // Continue com as demais combinações para garantir que todas as possibilidades sejam cobertas
             FimSe
          FimSe
       FimSe
+
+
+
 
       // Atualiza a média acumulada
       mediaAcumulada <- mediaAcumulada + media
