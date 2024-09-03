@@ -1,4 +1,4 @@
-Um professor realizou quatro avaliações com seus alunos durante o semestre letivo. 
+Um professor realizou QUATRO avaliações com seus alunos durante o semestre letivo. 
 Ele resolve que a média final de cada aluno será calculada por meio de média ponderada,caso as notas do aluno sejam distintas. 
 Neste caso, a MAIOR nota do aluno terá peso 4, 
 a SEGUNDA MAIOR nota terá peso igual a 3, 
@@ -15,7 +15,7 @@ Caso seja possível determinar uma nota MENOR entre todas, mas não uma nota mai
 então a nota menor terá peso 1 e as demais notas peso 3.  
 
 Elabore um programa em C que receba:
-- o número de alunos da turma e para cada aluno a sua matrícula 
+- o número de alunos da turma e para cada aluno a sua matrícula (??)
 - as quatro notas das suas avaliações  
 - calcule e exiba a média final de cada aluno, 
 - a média aritmética geral da turma, 
