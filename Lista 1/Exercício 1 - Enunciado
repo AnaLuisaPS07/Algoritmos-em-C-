@@ -35,3 +35,10 @@ devem ser valores reais com precisão de uma casa decimal
 
 
 
+CÁLCULO DE MÉDIA PONDERADA:
+Multiplique cada valor pelo seu peso correspondente.
+Some todos os resultados dessas multiplicações.
+Divida essa soma pela soma dos pesos.
+
+
+
