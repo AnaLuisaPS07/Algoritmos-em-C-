@@ -1,0 +1,25 @@
+#include <stdio.h>
+        void main ()    //Um Primeiro Programa 
+        {
+            printf ("Ola! Eu estou vivo!\n");
+        }
+
+//A linha "#include <stdio.h>" diz ao compilador que ele deve incluir o arquivo-cabeçalho stdio.h.
+//Neste arquivo existem declarações de funções úteis para entrada e saída de dados
+//(std = standard, padrão em inglês; io = Input/Output, entrada e saída ==> STDIO = Entrada e saída padronizadas).
+//Toda vez que você quiser usar uma destas funções deve-se incluir este comando. 
+
+//A linha void "main()" define uma função de nome main. 
+//Todos os programas em C têm que ter uma função main, 
+//pois é esta função que será chamada quando o programa for executado.
+//O conteúdo da função é delimitado por chaves { }. 
+//O código que estiver dentro das chaves será executado sequencialmente quando a função for chamada.
+//A palavra "void" indica que esta função não retorna nada, isto é seu retorno é vazio. 
+
+//A única coisa que o programa realmente faz é chamar a função "printf()", 
+//passando a string "Ola! Eu estou vivo!\n" como argumento. 
+//É por causa do uso da função "printf()" pelo programa que devemos incluir o arquivo- cabeçalho "stdio.h". 
+//No caso, o "\n" é a constante barra invertida de "new line" e ele é interpretado como um comando de mudança de linha, 
+//após imprimir "Ola! Eu estou vivo!" o cursor passará para a próxima linha. 
+//É importante observar também que os comandos do C terminam com ; 
+
