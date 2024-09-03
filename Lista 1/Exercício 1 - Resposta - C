@@ -1,1 +1,34 @@
+//Exercicio1
+#include <stdio.h>
+
+int main() {
+    int turma, c = 0;
+    float notas, media, maiorMedia, menorMedia;
+
+    printf("Entre com o numero de alunos da turma: ");
+    scanf("%d", &turma);
+    printf("\n");
+
+    while (c < turma) {
+        c++;
+        printf("Notas aluno %d: ", c);
+        scanf("%f", &notas);
+        printf("\n");
+
+//Calculo da media virá aqui
+        printf("Media final do aluno %d: \n", c);
+        printf("\n");
+    }
+
+    printf("Media geral da turma: %.2f\n", media);
+    printf("\n");
+
+    printf("Maior media da turma: %.2f (Alunos: %d, %d)\n", maiorMedia, 1, 4);
+    printf("\n");
+
+    printf("Menor media da turma: %.2f (Alunos: %d)\n", menorMedia, 2);
+    printf("\n");
+
+    return 0;
+}
 
