@@ -5,9 +5,18 @@ int main() {
     int turma, c = 0;
     float notas, media, maiorMedia, menorMedia;
 
+    do {
     printf("Entre com o numero de alunos da turma: ");
+    
     scanf("%d", &turma);
     printf("\n");
+    if (turma <= 0 || turma > 50) {
+        printf("O numero de alunos na turma deve ser maior do que zero e menor ou igual a 50");
+        printf("\n");
+    }
+    printf("\n");
+}   while (turma <= 0 || turma > 50);
+
 
     while (c < turma) {
         c++;
@@ -31,4 +40,3 @@ int main() {
 
     return 0;
 }
-
