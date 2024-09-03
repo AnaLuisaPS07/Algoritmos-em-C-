@@ -1,0 +1,91 @@
+algoritmo "Lista 1 - Ex1"
+var
+   turma, c, i : inteiro
+   notas: vetor[4] de real
+   media, mediaGeral, maiorMedia, menorMedia: real
+   primeiraIteracao: logico
+
+inicio
+      c <- 0
+      mediaGeral <- 0
+      maiorMedia <- 0
+      menorMedia <- 10
+      primeiraIteracao <- verdadeiro
+
+      // Receber o número de alunos
+      Repita
+            Escreval ("Entre com o numero de alunos da turma: ")
+            Leia (turma)
+            Se (turma <= 0) ou (turma > 50) entao
+                Escreval ("O numero de alunos na turma deve ser maior do que zero e menor ou igual a 50")
+            FimSe
+            Escreval (" ")
+      Ate (turma > 0) e (turma <= 50)
+
+      // Loop para calcular a média de cada aluno
+      Enquanto (c < turma) faca
+            c <- c + 1
+
+            // Receber as notas do aluno
+            Escreval ("Notas aluno", c, ": ")
+            Para i de 0 ate 3 faca
+                  Leia (notas[i])
+            FimPara
+            Escreval (" ")
+
+            // Ordenar as notas em ordem decrescente
+            Para i de 0 ate 2 faca
+                Para j de i + 1 ate 3 faca
+                    Se (notas[i] < notas[j]) entao
+                        aux <- notas[i]
+                        notas[i] <- notas[j]
+                        notas[j] <- aux
+                    FimSe
+                FimPara
+            FimPara
+
+            // Verificar as condições e calcular a média ponderada
+            Se (notas[0] = notas[1]) e (notas[1] = notas[2]) e (notas[2] = notas[3]) entao
+                media <- (notas[0] * 2.5 + notas[1] * 2.5 + notas[2] * 2.5 + notas[3] * 2.5) / 10
+            Senao
+                Se (notas[0] > notas[1]) e (notas[3] < notas[2]) entao
+                    media <- (notas[0] * 4 + notas[1] * 3 + notas[2] * 2 + notas[3] * 1) / 10
+                Senao
+                    Se (notas[0] > notas[1]) e (notas[1] = notas[2]) e (notas[2] = notas[3]) entao
+                        media <- (notas[0] * 4 + notas[1] * 2 + notas[2] * 2 + notas[3] * 2) / 10
+                    Senao
+                        Se (notas[0] = notas[1]) e (notas[1] = notas[2]) e (notas[2] > notas[3]) entao
+                            media <- (notas[0] * 3 + notas[1] * 3 + notas[2] * 3 + notas[3] * 1) / 10
+                        FimSe
+                    FimSe
+                FimSe
+            FimSe
+
+            // Atualizar a média geral
+            mediaGeral <- mediaGeral + media
+
+            // Verificar maior e menor média
+            Se (primeiraIteracao) ou (media > maiorMedia) entao
+                maiorMedia <- media
+            FimSe
+
+            Se (primeiraIteracao) ou (media < menorMedia) entao
+                menorMedia <- media
+            FimSe
+
+            primeiraIteracao <- falso
+
+            // Exibir a média do aluno
+            Escreval ("Media final do aluno", c, ": ", media)
+            Escreval (" ")
+      FimEnquanto
+
+      // Calcular e exibir a média geral da turma
+      mediaGeral <- mediaGeral / turma
+      Escreval ("Media geral da turma: ", mediaGeral)
+      Escreval (" ")
+
+      // Exibir a maior e a menor média
+      Escreval ("Maior media da turma: ", maiorMedia)
+      Escreval ("Menor media da turma: ", menorMedia)
+fimalgoritmo
