@@ -13,7 +13,7 @@ algoritmo "Lista 1 - Ex1"
 var
 
    turma, c : inteiro
-   notas, media, maiorMedia, menorMedia: real
+   n1, n2, n3, n4, media, maiorMedia, menorMedia: real
 
 
 inicio
@@ -35,7 +35,7 @@ inicio
       
         c <- c + 1
         Escreval ("Notas aluno" , c, ": ")
-        Leia (notas)
+        Leia (n1,n2,n3,n4)
         Escreval (" ")
       
         Escreval ("Media final do aluno", c, ": ")
