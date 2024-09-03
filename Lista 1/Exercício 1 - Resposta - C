@@ -3,13 +3,13 @@
 
 int main() {
     int turma, c = 0;
-    float notas, media, maiorMedia, menorMedia;
+    float n1, n2, n3, n4, media, maiorMedia, menorMedia;
 
     do {
     printf("Entre com o numero de alunos da turma: ");
-    
     scanf("%d", &turma);
     printf("\n");
+    
     if (turma <= 0 || turma > 50) {
         printf("O numero de alunos na turma deve ser maior do que zero e menor ou igual a 50");
         printf("\n");
@@ -21,7 +21,7 @@ int main() {
     while (c < turma) {
         c++;
         printf("Notas aluno %d: ", c);
-        scanf("%f", &notas);
+        scanf("%f %f %f %f", &n1, &n2, &n3, &n4);
         printf("\n");
 
 //Calculo da media virá aqui
