@@ -22,3 +22,15 @@ Elabore um programa em C que receba:
 - a menor média da turma juntamente com os alunos que a obtiveram.
 
 
+Considerações sobre as entradas e saídas e respectivas formatações:
+
+· O número de alunos da turma deve ser valor inteiro, maior do que zero e menor ou igual a 50
+
+· A nota de cada uma das quatro avaliações do aluno deve ser valor real, 
+maior ou igual a 0 e menor do que 10,0, e ter uma precisão de uma casa decimal
+
+· As saídas do programa (média final do aluno, média geral da turma, maior média de turma e menor média da turma) 
+devem ser valores reais com precisão de uma casa decimal
+
+
+
