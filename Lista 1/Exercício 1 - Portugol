@@ -13,16 +13,23 @@ algoritmo "Lista 1 - Ex1"
 var
 
    turma, c : inteiro
-   notas, media, maiorMedia, menorMedia:
+   notas, media, maiorMedia, menorMedia: real
 
 
 inicio
 
       c <- 0
       
+      Repita
+      
       Escreval ("Entre com o numero de alunos da turma: ")
       Leia (turma)
+       Se (turma <= 0) ou (turma > 50) entao
+         Escreval ("O numero de alunos na turma deve ser maior do que zero e menor ou igual a 50")
+       FimSe
       Escreval (" ")
+      
+      Ate (turma > 0) e (turma < 50)
       
       Enquanto (c < turma) faca
       
@@ -33,16 +40,16 @@ inicio
       
         Escreval ("Media final do aluno", c, ": ")
         Escreval (" ")
-      
+
       FimEnquanto
       
       Escreval ("Media geral da turma: ", media)
       Escreval (" ")
       
-      Escreval ("Maior media da turma: ", maiorMedia, "(Alunos: ", 1 4, ")")
+      Escreval ("Maior media da turma: ", maiorMedia, "(Alunos: ", , ")")
       Escreval (" ")
       
-      Escreval ("Menor media da turma: ", menorMedia, "Alunos: ", 2, ")")
+      Escreval ("Menor media da turma: ", menorMedia, "Alunos: ", , ")")
       Escreval (" ")
 
 fimalgoritmo
