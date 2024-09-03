@@ -1,7 +1,8 @@
 Um professor realizou quatro avaliações com seus alunos durante o semestre letivo. 
 Ele resolve que a média final de cada aluno será calculada por meio de média ponderada,caso as notas do aluno sejam distintas. 
 Neste caso, a MAIOR nota do aluno terá peso 4, 
-a SEGUNDA MAIOR nota terá peso igual a 3, a TERCEIRA MAIOR nota terá peso 2, 
+a SEGUNDA MAIOR nota terá peso igual a 3, 
+a TERCEIRA MAIOR nota terá peso 2, 
 a QUARTA MAIOR nota terá peso 1. 
 
 Caso não seja possível determinar uma nota maior entre todas e 
