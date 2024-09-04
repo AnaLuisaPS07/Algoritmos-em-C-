@@ -11,3 +11,95 @@ Este laço for percorre cada aluno (de 1 a n). Dentro dele, um do-while é usado
 garantir que as notas inseridas estão 
 entre 0 e 10. Se qualquer nota estiver fora desse intervalo, 
 o usuário é solicitado a inserir novamente.
+
+
+
+    if (nota1 == nota2 && nota2 == nota3 && nota3 == nota4) {
+        media_final = (nota1 + nota2 + nota3 + nota4) * 2.5 / 10.0;
+    }
+
+Se todas as notas são iguais, a média final é calculada com um peso igual 
+para cada nota (2,5), somando todas as notas e dividindo por 10.
+
+
+
+    else if ((nota1 > nota2 && nota2 == nota3 && nota3 == nota4) || 
+             (nota2 > nota1 && nota1 == nota3 && nota3 == nota4) || 
+             (nota3 > nota1 && nota1 == nota2 && nota2 == nota4) || 
+             (nota4 > nota1 && nota1 == nota2 && nota2 == nota3)) {
+        media_final = (nota1 * 4 + nota2 * 2 + nota3 * 2 + nota4 * 2) / 10.0;
+    }
+Se uma nota é maior e as outras são iguais, a nota maior recebe peso 4, 
+e as outras recebem peso 2. A média é então calculada com base nesses pesos.
+
+
+
+    else if ((nota1 < nota2 && nota2 == nota3 && nota3 == nota4) || 
+             (nota2 < nota1 && nota1 == nota3 && nota3 == nota4) || 
+             (nota3 < nota1 && nota1 == nota2 && nota2 == nota4) || 
+             (nota4 < nota1 && nota1 == nota2 && nota2 == nota3)) {
+        media_final = (nota1 * 1 + nota2 * 3 + nota3 * 3 + nota4 * 3) / 10.0;
+    }
+Se uma nota é menor e as outras são iguais, a nota menor recebe peso 1, 
+e as outras recebem peso 3. A média é calculada com esses pesos.
+
+
+    else {
+        float maior, segunda, terceira, menor;
+
+        // Ordena as notas para a ponderação correta
+        if (nota1 >= nota2 && nota1 >= nota3 && nota1 >= nota4) {
+            maior = nota1;
+            if (nota2 >= nota3 && nota2 >= nota4) {
+                segunda = nota2;
+                terceira = nota3 >= nota4 ? nota3 : nota4;
+                menor = nota3 < nota4 ? nota3 : nota4;
+            } 
+            // Continua a lógica de ordenação...
+        }
+        // Continua a lógica para os outros casos...
+
+        media_final = (maior * 4 + segunda * 3 + terceira * 2 + menor * 1) / 10.0;
+    }
+Se todas as notas são diferentes, o código ordena as notas e atribui pesos 4, 3, 2, e 1 
+para a maior, segunda maior, terceira maior e menor nota, respectivamente.
+
+
+    media_geral += media_final;
+
+    printf("Media final do aluno %d: %.1f\n", i, media_final);
+
+    if (i == 1) {
+        maior_media = media_final;
+        menor_media = media_final;
+        aluno_maior_media = matricula_atual;
+        aluno_menor_media = matricula_atual;
+    } else {
+        if (media_final > maior_media) {
+            maior_media = media_final;
+            aluno_maior_media = matricula_atual;
+        }
+        if (media_final < menor_media) {
+            menor_media = media_final;
+            aluno_menor_media = matricula_atual;
+        }
+    }
+
+    matricula_atual++;
+}
+Aqui, a média geral é acumulada e as maiores e menores médias são rastreadas 
+junto com a matrícula dos alunos correspondentes.
+
+
+
+
+media_geral /= n;
+printf("Media geral da turma: %.1f\n", media_geral);
+printf("Maior media da turma: %.1f (Aluno: %d)\n", maior_media, aluno_maior_media);
+printf("Menor media da turma: %.1f (Aluno: %d)\n", menor_media, aluno_menor_media);
+
+return 0;
+}
+
+Finalmente, o código calcula a média geral da turma, exibe essa média, 
+assim como as maiores e menores médias e os alunos que as obtiveram.
