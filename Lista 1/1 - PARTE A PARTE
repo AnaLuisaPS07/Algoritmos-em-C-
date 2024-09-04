@@ -1,0 +1,13 @@
+for (i = 1; i <= n; i++) {
+ do {
+    printf("Notas aluno %d: ", i);
+    scanf("%f %f %f %f", &nota1, &nota2, &nota3, &nota4);
+      if (n1 < 0 || n1 > 10 || n2 < 0 || n2 > 10 || n3 < 0 || n3 > 10 || n4 < 0 || n4 > 10) {
+       printf("Todas as notas do aluno devem ser maiores ou iguais a zero e menores ou iguais a 10\n");
+        }
+    } while (n1 < 0 || n1 > 10 || n2 < 0 || n2 > 10 || n3 < 0 || n3 > 10 || n4 < 0 || n4 > 10);
+
+Este laço for percorre cada aluno (de 1 a n). Dentro dele, um do-while é usado para 
+garantir que as notas inseridas estão 
+entre 0 e 10. Se qualquer nota estiver fora desse intervalo, 
+o usuário é solicitado a inserir novamente.
