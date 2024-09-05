@@ -4,8 +4,8 @@
 #define MAX_ANO 2024
 #define MIN_MES 1
 #define MAX_MES 12
-#define MIN_TEMP -70
-#define MAX_TEMP 60
+#define MIN_TEMP -100
+#define MAX_TEMP 100
 
 int dias_no_mes(int mes, int ano) {
     // Função para determinar o número de dias no mês
