@@ -70,7 +70,8 @@ int main() {
         scanf("%d", &temperaturas[i]);
         printf("\n");
         while (temperaturas[i] < MIN_TEMP || temperaturas[i] > MAX_TEMP) {
-            printf("Temperatura deve ser maior ou igual a %d graus e menor ou igual a %d graus\n", -100, 100);
+            printf("\n");
+            printf("Temperatura deve ser maior ou igual a %d graus e menor ou igual a %d graus\n", -70, 60);
             printf("\n");
             printf("Dia %d: ", i + 1);
             scanf("%d", &temperaturas[i]);
