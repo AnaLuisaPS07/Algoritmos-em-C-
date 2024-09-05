@@ -1,0 +1,257 @@
+//Exercício 1 - lista 1
+
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    float nota1, nota2, nota3, nota4;
+    float media_final, media_geral = 0, maior_media, menor_media;
+    int aluno_maior_media, aluno_menor_media;
+    int matricula_atual = 1;
+
+    do {
+        printf("Entre com o numero de alunos da turma:");
+        scanf("%d", &n);
+        printf("\n");
+        if (n <= 0 || n > 50) {
+        printf("O numero de alunos na turma deve ser maior do que zero e menor ou igual a 50\n\n");
+            
+        }
+    } while (n <= 0 || n > 50);
+    //''Enquanto''
+
+// Loop para validar as notas
+    for (i = 1; i <= n; i++) {
+        int notas_validas = 0; //falso
+        while (!notas_validas) { // enquanto notas_validas for falso (0), o loop continua
+            printf("Notas aluno %d: ", i);
+            scanf("%f %f %f %f", &nota1, &nota2, &nota3, &nota4);
+            printf("\n");
+
+            if ((nota1 < 0 || nota1 > 10) || (nota2 < 0 || nota2 > 10) ||
+                (nota3 < 0 || nota3 > 10) || (nota4 < 0 || nota4 > 10)) {
+                printf("Todas as notas do aluno devem ser maiores ou iguais a zero e menores ou iguais a 10\n\n");
+            } else {
+                notas_validas = 1; //Verdadeiro, fim de loop
+            }
+        }
+
+        // Lógica de cálculo das médias
+        if (nota1 == nota2 && nota2 == nota3 && nota3 == nota4) {
+            media_final = (nota1 + nota2 + nota3 + nota4) * 2.5 / 10.0; // notas iguais
+            
+        } else if ((nota1 > nota2 && nota2 == nota3 && nota3 == nota4) || 
+                   (nota2 > nota1 && nota1 == nota3 && nota3 == nota4) || 
+                   (nota3 > nota1 && nota1 == nota2 && nota2 == nota4) || 
+                   (nota4 > nota1 && nota1 == nota2 && nota2 == nota3)) {
+            media_final = (nota1 * 4 + nota2 * 2 + nota3 * 2 + nota4 * 2) / 10.0; //Uma maior e o resto igual
+            
+        } else if ((nota1 < nota2 && nota2 == nota3 && nota3 == nota4) || 
+                   (nota2 < nota1 && nota1 == nota3 && nota3 == nota4) || 
+                   (nota3 < nota1 && nota1 == nota2 && nota2 == nota4) || 
+                   (nota4 < nota1 && nota1 == nota2 && nota2 == nota3)) {
+            media_final = (nota1 * 1 + nota2 * 3 + nota3 * 3 + nota4 * 3) / 10.0;  // uma menor e o resto igual
+            //nesse caso a menor de todas é a primeira
+            
+        } else { //SENAO
+            float maior, segunda, terceira, menor;
+
+            // Ordena as notas para a ponderação correta
+            //PRIMEIRO CASO
+            if (nota1 >= nota2 && nota1 >= nota3 && nota1 >= nota4) {
+                maior = nota1; // DECISÃO DA MAIOR
+
+                if (nota2 >= nota3 && nota2 >= nota4) {
+                    segunda = nota2; //DECISAO DA SEGUNDA MAIOR
+
+                    if (nota3 >= nota4) {
+                        terceira = nota3; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota4;
+
+                    } else {// SENAO
+                        terceira = nota4; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota3;
+                    }
+                    
+                } else if (nota3 >= nota2 && nota3 >= nota4) {
+                    segunda = nota3; //DECISAO DA SEGUNDA MAIOR (2)
+
+                    if (nota2 >= nota4) {
+                        terceira = nota2; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota4;
+
+                    } else {
+                        terceira = nota4; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota2;
+                    }
+
+                } else {
+                    segunda = nota4; //DECISAO DA SEGUNDA MAIOR (3)
+
+                    if (nota2 >= nota3) {
+                        terceira = nota2; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota3;
+
+                    } else {
+                        terceira = nota3; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota2;
+                    }
+                }
+               //SEGUNDO CASO
+            } else if (nota2 >= nota1 && nota2 >= nota3 && nota2 >= nota4) {
+                maior = nota2; //DECISAO DA MAIOR
+
+                if (nota1 >= nota3 && nota1 >= nota4) {
+                    segunda = nota1; //DECISAO DA SEGUNDA MAIOR 
+
+                    if (nota3 >= nota4) {
+                        terceira = nota3; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota4;
+
+                    } else {
+                        terceira = nota4; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota3;
+                    }
+                    
+                } else if (nota3 >= nota1 && nota3 >= nota4) {
+                    segunda = nota3; //DECISAO DA SEGUNDA MAIOR (2)
+
+                    if (nota1 >= nota4) {
+                        terceira = nota1; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota4;
+
+                    } else {
+                        terceira = nota4; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota1;
+                    }
+                    
+                } else {
+                    segunda = nota4; //DECISAO DA SEGUNDA MAIOR (3)
+
+                    if (nota1 >= nota3) {
+                        terceira = nota1; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota3;
+
+                    } else {
+                        terceira = nota3; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota1;
+                    }
+                }
+             //TERCEIRO CASO   
+            } else if (nota3 >= nota1 && nota3 >= nota2 && nota3 >= nota4) {
+                maior = nota3; //DECISAO DA MAIOR
+
+                if (nota1 >= nota2 && nota1 >= nota4) {
+                    segunda = nota1; //DECISAO DA SEGUNDA MAIOR
+
+                    if (nota2 >= nota4) {
+                        terceira = nota2; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota4;
+
+                    } else {
+                        terceira = nota4; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota2;
+                    }
+                    
+                } else if (nota2 >= nota1 && nota2 >= nota4) {
+                    segunda = nota2; //DECISAO DA SEGUNDA MAIOR (2)
+
+                    if (nota1 >= nota4) {
+                        terceira = nota1; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota4;
+
+                    } else {
+                        terceira = nota4; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota1;
+                    }
+                    
+                } else {
+                    segunda = nota4; //DECISAO DA SEGUNDA MAIOR (3)
+
+                    if (nota1 >= nota2) { 
+                        terceira = nota1; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota2;
+
+                    } else {
+                        terceira = nota2; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota1;
+                    }
+                }
+            // QUARTO CASO    
+            } else {
+                maior = nota4; //DECISAO DA MAIOR
+
+                if (nota1 >= nota2 && nota1 >= nota3) {
+                    segunda = nota1; //DECISAO DA SEGUNDA MAIOR (1)
+
+                    if (nota2 >= nota3) {
+                        terceira = nota2; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota3;
+
+                    } else {
+                        terceira = nota3; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota2;
+                    }
+                    
+                } else if (nota2 >= nota1 && nota2 >= nota3) {
+                    segunda = nota2; //DECISAO DA SEGUNDA MAIOR (2)
+
+                    if (nota1 >= nota3) {
+                        terceira = nota1; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota3;
+
+                    } else {
+                        terceira = nota3; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota1;
+                    }
+                    
+                } else {
+                    segunda = nota3; //DECISAO DA SEGUNDA MAIOR (3)
+
+                    if (nota1 >= nota2) {
+                        terceira = nota1; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota2;
+
+                    } else {
+                        terceira = nota2; //DECISAO DA TERCEIRA E MENOR MAIOR
+                        menor = nota1;
+                    }
+                }
+            }
+
+            media_final = (maior * 4 + segunda * 3 + terceira * 2 + menor * 1) / 10.0;
+            //TODAS DIFERENTES
+        }
+        printf("Media final do aluno %d: %.1f\n\n", i, media_final);
+
+           media_geral += media_final;
+
+        if (i == 1) {
+            maior_media = media_final;
+            menor_media = media_final;
+            aluno_maior_media = matricula_atual;
+            aluno_menor_media = matricula_atual;
+        } else {
+            
+            if (media_final > maior_media) {
+                maior_media = media_final;
+                aluno_maior_media = matricula_atual;
+            }
+            
+            if (media_final < menor_media) {
+                menor_media = media_final;
+                aluno_menor_media = matricula_atual;
+            }
+        }
+
+        matricula_atual++;
+    }
+
+    media_geral /= n;
+    
+    printf("Media geral da turma: %.1f\n\n", media_geral);
+    printf("Maior media da turma: %.1f (Aluno: %d)\n\n", maior_media, aluno_maior_media);
+    printf("Menor media da turma: %.1f (Aluno: %d)\n\n", menor_media, aluno_menor_media);
+
+    return 0;
+}
