@@ -10,7 +10,7 @@ int main() {
     int matricula_atual = 1;
 
     do {
-        printf("Entre com o numero de alunos da turma:");
+        printf("Entre com o numero de alunos da turma: ");
         scanf("%d", &n);
         printf("\n");
         if (n <= 0 || n > 50) {
@@ -250,8 +250,8 @@ int main() {
     media_geral /= n;
     
     printf("Media geral da turma: %.1f\n\n", media_geral);
-    printf("Maior media da turma: %.1f (Aluno: %d)\n\n", maior_media, aluno_maior_media);
-    printf("Menor media da turma: %.1f (Aluno: %d)\n\n", menor_media, aluno_menor_media);
+    printf("Maior media da turma: %.1f (Alunos: %d)\n\n", maior_media, aluno_maior_media);
+    printf("Menor media da turma: %.1f (Alunos: %d)\n\n", menor_media, aluno_menor_media);
 
     return 0;
 }
