@@ -1,4 +1,6 @@
 //Exercicio1
+// Consegui fazer até aqui 
+
 #include <stdio.h>
 
 int main() {
