@@ -1,3 +1,6 @@
+// passou em 4 de 5
+
+
 #include <stdio.h>
 #include <stdbool.h>
 
@@ -25,18 +28,23 @@ void lerConjunto(int conjunto[], int *tamanho, char nome) {
         }
     }
 
-    printf("Entre com os elementos do conjunto %c:\n", nome);
-    for (int i = 0; i < n; i++) {
-        int elemento;
-        scanf("%d", &elemento);
+    // Inserção dos elementos
+    int i = 0;
+    while (i < n) {
+        printf("Entre com os elementos do conjunto %c: ", nome);
+        for (int j = i; j < n; j++) {
+            int elemento;
+            scanf("%d", &elemento);
 
-        // Verifica se o elemento já está no conjunto
-        if (!existeNoConjunto(conjunto, *tamanho, elemento)) {
-            conjunto[*tamanho] = elemento;
-            (*tamanho)++;
-        } else {
-            printf("O conjunto nao pode ter elementos repetidos. Insira novamente o elemento.\n\n");
-            i--; // Mantém o índice para permitir uma nova inserção
+            // Verifica se o elemento é repetido
+            if (!existeNoConjunto(conjunto, *tamanho, elemento)) {
+                conjunto[*tamanho] = elemento;
+                (*tamanho)++;
+                i++;
+            } else {
+                printf("O conjunto nao pode ter elementos repetidos\n\n");
+                break; // Sai do loop interno e solicita novamente todos os elementos
+            }
         }
     }
 }
@@ -101,20 +109,20 @@ int main() {
     printf("\n");
 
     // Calcular e exibir a união
-    tamanhoUniao = uniao(A, tamanhoA, B, tamanhoB, uniaoResultado);
-    exibirConjunto(uniaoResultado, tamanhoUniao, "Conjunto uniao");
+    tamanhoUniao=uniao(A,tamanhoA,B,tamanhoB,uniaoResultado);
+    exibirConjunto(uniaoResultado,tamanhoUniao,"Conjunto uniao");
 
     // Calcular e exibir a interseção
     tamanhoIntersecao = intersecao(A, tamanhoA, B, tamanhoB, intersecaoResultado);
-    exibirConjunto(intersecaoResultado, tamanhoIntersecao, "Conjunto intersecao");
+    exibirConjunto(intersecaoResultado, tamanhoIntersecao,"Conjunto interseccao");
 
     // Calcular e exibir a diferença A - B
     tamanhoDiferencaAB = diferenca(A, tamanhoA, B, tamanhoB, diferencaAB);
-    exibirConjunto(diferencaAB, tamanhoDiferencaAB, "Conjunto diferenca entre A e B");
+    exibirConjunto(diferencaAB, tamanhoDiferencaAB,"Conjunto diferenca entre A e B");
 
     // Calcular e exibir a diferença B - A
     tamanhoDiferencaBA = diferenca(B, tamanhoB, A, tamanhoA, diferencaBA);
-    exibirConjunto(diferencaBA, tamanhoDiferencaBA, "Conjunto diferenca entre B e A");
+    exibirConjunto(diferencaBA, tamanhoDiferencaBA,"Conjunto diferenca entre B e A");
 
     return 0;
 }
