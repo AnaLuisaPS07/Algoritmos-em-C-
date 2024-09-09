@@ -1,0 +1,199 @@
+1. Incluindo Bibliotecas
+
+#include <stdio.h>
+#include <stdbool.h>
+
+#include <stdio.h>: Inclui a biblioteca padrão de entrada e saída em C, necessária para usar funções como printf e scanf.
+
+Analogamente em Portugol: Não há uma instrução equivalente direta, mas é como se fosse um 
+comando para incluir funções pré-definidas para exibir mensagens na tela ou ler entradas do usuário.
+
+#include <stdbool.h>: Inclui a biblioteca para trabalhar com o tipo bool, que pode ser true (verdadeiro) ou false (falso).
+
+Analogamente em Portugol: Em Portugol, o tipo lógico (boolean) também tem os valores verdadeiro e falso.
+
+
+2. Função existeNoConjunto
+
+
+bool existeNoConjunto(int conjunto[], int tamanho, int elemento) {
+    for (int i = 0; i < tamanho; i++) {
+        if (conjunto[i] == elemento) {
+            return true;
+        }
+    }
+    return false;
+}
+
+Objetivo: Verifica se um determinado elemento já está presente em um conjunto.
+
+Em Portugol: É como uma função que percorre um vetor e verifica se o número já está lá. Se estiver, 
+retorna verdadeiro; se não, retorna falso.
+
+Explicação:
+
+Parâmetros:
+
+int conjunto[]: Um array (vetor) de inteiros que representa o conjunto.
+
+int tamanho: O tamanho do conjunto (quantidade de elementos).
+
+int elemento: O elemento que queremos verificar.
+
+Laço for: Percorre cada elemento do conjunto.
+
+if (conjunto[i] == elemento): Verifica se o elemento na posição i do conjunto é igual ao que estamos procurando.
+
+return true;: Se encontrar o elemento, retorna verdadeiro (true).
+
+return false;: Se não encontrar após percorrer todo o conjunto, retorna falso (false).
+
+
+3. Função lerConjunto
+
+void lerConjunto(int conjunto[], int *tamanho, char nome) {
+    int n;
+    while (true) {
+        printf("Entre com o numero de elementos do conjunto %c: ", nome);
+        scanf("%d", &n);
+        while (getchar() != '\n');
+        printf("\n");
+        if (n > 0) {
+            break;
+        } else {
+            printf("O numero de elementos do conjunto %c deve ser maior do que zero\n\n", nome);
+        }
+    }
+    // Restante do código...
+}
+
+Objetivo: Ler os elementos de um conjunto e garantir que não haja repetições.
+
+Em Portugol: Seria uma função que pede ao usuário para inserir elementos de um vetor e verifica se há números repetidos, 
+pedindo para inserir novamente se houver.
+
+Explicação:
+
+int n;: Armazena o número de elementos que o conjunto terá.
+
+Laço while (true): Pede ao usuário para inserir o número de elementos do conjunto até que seja maior que zero.
+
+scanf("%d", &n);: Lê o número de elementos.
+
+getchar();: Limpa o buffer de entrada.
+
+if (n > 0): Verifica se o número é maior que zero. Se for, sai do laço.
+
+else: Se o número for menor ou igual a zero, exibe uma mensagem de erro.
+
+Verificação de Repetição:
+
+Outro laço while (true) é usado para garantir que os elementos inseridos não sejam repetidos.
+if (existeNoConjunto(conjunto, *tamanho, elemento)): Verifica se o elemento já está presente no conjunto. 
+Se estiver, define repetido como verdadeiro e sai do laço.
+conjunto[*tamanho] = elemento; (*tamanho)++;: Se o elemento não estiver repetido, 
+ele é adicionado ao conjunto e o tamanho do conjunto é incrementado.
+
+
+4. Função exibirConjunto
+
+void exibirConjunto(int conjunto[], int tamanho, char *nome) {
+    printf("\n%s: ", nome);
+    if (tamanho == 0) {
+        printf("vazio");
+    } else {
+        for (int i = 0; i < tamanho; i++) {
+            printf("%d ", conjunto[i]);
+        }
+    }
+    printf("\n");
+}
+Objetivo: Exibir os elementos de um conjunto.
+
+Em Portugol: Similar a um procedimento que exibe todos os elementos de um vetor.
+
+Explicação:
+
+printf("\n%s: ", nome);: Exibe o nome do conjunto (por exemplo, "Conjunto A").
+
+if (tamanho == 0): Se o conjunto estiver vazio, exibe "vazio".
+
+Laço for: Percorre o conjunto e exibe cada elemento.
+
+
+5. Funções para Operações com Conjuntos
+
+União: Combina os elementos de dois conjuntos, sem repetir elementos.
+
+int uniao(int A[], int tamanhoA, int B[], int tamanhoB, int resultado[]) {
+    int tamanhoResultado = 0;
+    for (int i = 0; i < tamanhoA; i++) {
+        resultado[tamanhoResultado++] = A[i];
+    }
+    for (int i = 0; i < tamanhoB; i++) {
+        if (!existeNoConjunto(A, tamanhoA, B[i])) {
+            resultado[tamanhoResultado++] = B[i];
+        }
+    }
+    return tamanhoResultado;
+}
+Interseção: Retorna apenas os elementos que estão presentes em ambos os conjuntos.
+c
+Copy code
+int intersecao(int A[], int tamanhoA, int B[], int tamanhoB, int resultado[]) {
+    int tamanhoResultado = 0;
+    for (int i = 0; i < tamanhoA; i++) {
+        if (existeNoConjunto(B, tamanhoB, A[i])) {
+            resultado[tamanhoResultado++] = A[i];
+        }
+    }
+    return tamanhoResultado;
+}
+Diferença: Retorna os elementos que estão no primeiro conjunto, mas não no segundo.
+c
+Copy code
+int diferenca(int A[], int tamanhoA, int B[], int tamanhoB, int resultado[]) {
+    int tamanhoResultado = 0;
+    for (int i = 0; i < tamanhoA; i++) {
+        if (!existeNoConjunto(B, tamanhoB, A[i])) {
+            resultado[tamanhoResultado++] = A[i];
+        }
+    }
+    return tamanhoResultado;
+}
+Em Portugol: Estas operações seriam similares a percorrer dois vetores e aplicar as condições para união, 
+interseção ou diferença, adicionando os elementos resultantes a um novo vetor.
+
+
+6. Função Principal main
+
+int main() {
+    int A[100], B[100], uniaoResultado[200], intersecaoResultado[100], diferencaAB[100], diferencaBA[100];
+    int tamanhoA = 0, tamanhoB = 0, tamanhoUniao, tamanhoIntersecao, tamanhoDiferencaAB, tamanhoDiferencaBA;
+
+    lerConjunto(A, &tamanhoA, 'A');
+    lerConjunto(B, &tamanhoB, 'B');
+
+    tamanhoUniao = uniao(A, tamanhoA, B, tamanhoB, uniaoResultado);
+    exibirConjunto(uniaoResultado, tamanhoUniao, "Conjunto uniao");
+
+    tamanhoIntersecao = intersecao(A, tamanhoA, B, tamanhoB, intersecaoResultado);
+    exibirConjunto(intersecaoResultado, tamanhoIntersecao, "Conjunto interseccao");
+
+    tamanhoDiferencaAB = diferenca(A, tamanhoA, B, tamanhoB, diferencaAB);
+    exibirConjunto(diferencaAB, tamanhoDiferencaAB, "Conjunto diferenca entre A e B");
+
+    tamanhoDiferencaBA = diferenca(B, tamanhoB, A, tamanhoA, diferencaBA);
+    exibirConjunto(diferencaBA, tamanhoDiferencaBA, "Conjunto diferenca entre B e A");
+
+    return 0;
+}
+Objetivo: Este é o ponto de entrada do programa, onde as funções são chamadas para ler os conjuntos, 
+calcular as operações (união, interseção, diferença) e exibir os resultados.
+
+Em Portugol: Seria como o "algoritmo principal" onde chamamos subalgoritmos (funções) para realizar cada tarefa.
+
+Explicação:
+
+Declaração de Variáveis: Aqui, os conjuntos A e B são declarados, 
+assim como os arrays para armazenar os resultados das operações.
