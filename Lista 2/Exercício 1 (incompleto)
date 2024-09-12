@@ -1,0 +1,31 @@
+//Exercício 1 - lista 2
+//máquina de autoatendimento bancário
+
+#include <stdio.h>
+
+int main() {
+    float saldo_conta,saldo_novo;
+    int saque;
+    
+     printf("Entre com o saldo da conta a ser sacada (em reais): ");
+     scanf ("%f",&saldo_conta);
+     
+     do {
+        printf("Entre com o valor do saque (em reais): ");
+        scanf ("%f",&saque);
+        printf("\n");
+        
+        
+        if (saque >= saldo_conta) {
+        printf("Saldo insuficiente para valor desejado");
+        printf("\n");
+        }
+        else if (saque <= 0) {
+           printf("Valor do saque invalido"); 
+           printf("\n");
+        }
+            
+     } while (saque <= saldo_conta || saque >= 0);  // || saque=
+      
+    return 0;
+}
