@@ -11,19 +11,24 @@ int main() {
     // Entrada do saldo
     printf("Entre com o saldo da conta a ser sacada (em reais): ");
     scanf("%f", &saldo);
+    printf("\n");
 
     // Validação e entrada do valor do saque
     do {
         printf("Entre com o valor do saque (em reais): ");
         scanf("%d", &saque);
+        printf("\n");
 
         if (saque <= 0) {
             printf("Valor do saque invalido\n");
+            printf("\n");
         } else if (saque > (int)saldo) {
             printf("Saldo insuficiente para valor desejado\n");
+            printf("\n");
         } else if (saque % 10 == 1 || saque % 10 == 3) {
             // Verifica se o valor termina com 1 ou 3, que são incompatíveis com as cédulas disponíveis
             printf("Valor do saque incompativel com notas disponiveis\n");
+            printf("\n");
         }
     } while (saque <= 0 || saque > (int)saldo || saque % 10 == 1 || saque % 10 == 3);
 
@@ -47,21 +52,27 @@ int main() {
 
     // Resultados
     printf("\nRESULTADOS\n");
-    printf("Valor atualizado do saldo (em reais): %.2f\n\n", saldo);
+    printf("\n\n");
+    printf("Valor atualizado do saldo (em reais): %.2f\n", saldo);
+    printf("\n");
 
     // Opção 1: Menor quantidade possível de cédulas
     printf("Opcao de saque 1 (menor quantidade possivel de cedulas)\n");
+    printf("\n");
     for (i = 0; i < 6; i++) {
         if (qtdNotasMin[i] > 0) {
             printf("Cedulas de %d reais: %d\n", notas[i], qtdNotasMin[i]);
+            //printf("\n");
         }
     }
 
     // Opção 2: Maior quantidade possível de cédulas
     printf("\nOpcao de saque 2 (maior quantidade possivel de cedulas)\n");
+    printf("\n");
     for (i = 4; i < 6; i++) {  // Apenas notas de 5 e 2 reais
         if (qtdNotasMax[i] > 0) {
             printf("Cedulas de %d reais: %d\n", notas[i], qtdNotasMax[i]);
+            printf("\n");
         }
     }
 
