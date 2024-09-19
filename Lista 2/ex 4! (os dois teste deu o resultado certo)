@@ -46,11 +46,11 @@ int main() {
     qtdNotasMax[5] = temp_saque / 2;  // Cálculo das cédulas de 2 reais
     temp_saque %= 2;
 
-    // Agora, se ainda houver algum valor a ser sacado, usamos cédulas de 5 reais (caso seja múltiplo de 5)
-    if (temp_saque == 1 || temp_saque == 3) {
-        // Se o restante for 1 ou 3, ajustamos o uso das cédulas de 2 reais e usamos cédulas de 5 reais
-        qtdNotasMax[5] -= (temp_saque == 1) ? 1 : 2;
-        qtdNotasMax[4] = 1;  // Adiciona uma cédula de 5 reais
+    // Se o valor restante for 1 ou 3, ajustamos o uso de cédulas de 2 reais e introduzimos cédulas de 5 reais
+    if (temp_saque != 0) {
+        // Ajuste: se o valor restante for 1 ou 3, retiramos uma ou duas cédulas de R$ 2 e adicionamos uma de R$ 5
+        qtdNotasMax[5] -= 2;  // Retira duas cédulas de R$ 2
+        qtdNotasMax[4] = 1;   // Adiciona uma cédula de R$ 5
     }
 
     // Atualizando saldo
@@ -74,7 +74,7 @@ int main() {
     // Opção 2: Maior quantidade possível de cédulas
     printf("\nOpcao de saque 2 (maior quantidade possivel de cedulas)\n");
     printf("\n");
-    
+
     // Inverte a ordem de impressão para priorizar as cédulas de 2 reais
     for (i = 5; i >= 4; i--) {  // Primeiro imprime as notas de 2 reais, depois de 5 reais
         if (qtdNotasMax[i] > 0) {
