@@ -17,7 +17,6 @@ int main() {
     scanf("%s", saldoS);
     printf("\n\n");
 
-
     //Substituir vírgula por ponto, caso o usuário coloque vírgula
     for (i = 0; i < strlen(saldoS); i++) { //Comprimento da string
         if (saldoS[i] == ',') {
@@ -54,7 +53,7 @@ int main() {
             printf("\n");
 
         } else if (saque % 10 == 1 || saque % 10 == 3) {
-            //Verifica se o valor termina com 1 ou 3, pois são incompatíveis com as cédulas disponíveis
+            //Verifica se o valor termina com 1 ou 3
             printf("Valor do saque incompativel com notas disponiveis\n");
             printf("\n");
         }
@@ -63,13 +62,13 @@ int main() {
     //Menor número de cédulas
     aux_saque = saque; //Copia o valor
     for (i = 0; i < 6; i++) { //Itera sobre as cédulas
-        qtdNotasMin[i] = aux_saque / notas[i]; //Quantas cédulas necessárias
+        qtdNotasMin[i] = aux_saque / notas[i]; //Cálculo de quantas cédulas necessárias
         aux_saque %= notas[i]; //Atualiza
     }
 
     aux_saque = saque; //Reinicia para valor original
 
-    //Usar a maior quantidade possível de c[edulas de 2
+    //Usar a maior quantidade possível de cédulas de 2
     qtdNotasMax[5] = aux_saque / 2;  
     aux_saque %= 2;
 
