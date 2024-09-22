@@ -51,8 +51,8 @@ int main() {
     while (1) {
         int erro = 0;  // Flag para verificar se há algum erro
 
-        printf("Venda: \n");
-        scanf("%d %d %d %f", &nota_fiscal, &codigo_vendedor, &dia, &valor_venda);
+        printf("Venda: ");
+        scanf("%d %d %d %f", &nota_fiscal, &codigo_vendedor, &dia, &valor_venda,"\n");
         //printf("\n");
         
 
