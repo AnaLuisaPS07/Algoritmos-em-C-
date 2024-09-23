@@ -1,1 +1,24 @@
+#include <stdio.h>
 
+int main(){
+    int dado=10;
+    
+    printf("Valor antes do incremento: %d\n", dado);
+    
+    dado++;
+    printf("Valor após o incremento: %d\n", dado);
+    
+    dado--;
+    printf("Valor após o decremento: %d\n", dado);
+    
+    dado+=3;
+    printf("Valor antes do incremento em 3 unidades: %d\n", dado);
+    
+    dado-=2 ;
+    printf("Valor antes do decremento em 2 unidades: %d\n", dado);
+    
+    
+    dado*=10;
+    printf("Valor antes de multiplicar por 10: %d\n", dado);
+    
+}
