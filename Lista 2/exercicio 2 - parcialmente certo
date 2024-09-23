@@ -39,7 +39,7 @@ int main() {
         scanf("%d", &num_vendedores);
         printf("\n");
         if (num_vendedores < 1 || num_vendedores > MAX_VENDEDORES) {
-            printf("Numero de vendedores deve ser maior do que zero e menor ou igual a %d\n\n", MAX_VENDEDORES);
+            printf("Numero de vendedores deve ser maior do que zero\n");
         }
     } while (num_vendedores < 1 || num_vendedores > MAX_VENDEDORES);
 
@@ -51,8 +51,8 @@ int main() {
     while (1) {
         int erro = 0;  // Flag para verificar se há algum erro
 
-        printf("Venda: ");
-        scanf("%d %d %d %f", &nota_fiscal, &codigo_vendedor, &dia, &valor_venda,"\n");
+        printf("Venda: \n");
+        scanf("%d %d %d %f", &nota_fiscal, &codigo_vendedor, &dia, &valor_venda, "\n");
         //printf("\n");
         
 
