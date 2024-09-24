@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 int main() {
-    int i, num_lote, num_forno, dr, rt; 
+    int i, num_lote, num_forno, dr, rt, grau=10; 
     float pc;
     
     printf("Entre com o numero de lotes produzidos: ");
@@ -13,18 +13,43 @@ int main() {
     printf("\n");
     
    
-    
+    //ler os dados
     for(i=1;i<=num_lote; i++){
       printf("Lote %d:",i);
       scanf("%d %f %d %d", &num_forno, &pc, &dr, &rt);   
-      printf("\n");  
+      printf("\n"); 
+      
+      if(pc<0.7 && dr>50 && rt>800){
+          grau;
+      }   
+      if else(pc<0.7 && dr>50){
+          grau--;
+      }    
+      if else(pc<0.7 && rt>800){
+          grau-=2;
+      }    
+      if else(dr>50 && rt>800){
+          grau-=3;
+      } 
+      if else(pc<0.7){
+          grau-=4;
+      }
+      if else(dr>50){
+          grau-=5;
+      }
+      if else(rt>800){
+          grau-=4;
+      }
+      else
+      {
+          grau=0;
+      }
+      
     }
     
-    
-    //AQUI DEVE VIR CALCULOS
      printf("Grau de pureza dos lotes produzidos\n");
      for(i=1;i<=num_lote; i++){
-        printf("Lote %d:",i);
+        printf("Lote %d:",grau);
       printf("\n");  
     }
     
@@ -40,16 +65,9 @@ int main() {
 }
 
 
- //for(i=0;i<=num_lote; i++){
-      //printf("Lote i", i, ": ");
-      //scanf("%d %f %d %d", &num_forno, &pc, &dr, &rt);   
-        
-    //}
-    
-    //printf("Grau de pureza dos lotes produzidos");
-
-
-
+ //teste1 = pc < 7%
+ //teste2 = dr > 50
+//teste3 = rt >8000
 // 5 fornos
 //três critérios: percentual de conteúdo de carbono, dureza na escala Rockwell e resistência à tração.
 
