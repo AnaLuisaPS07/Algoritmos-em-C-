@@ -1,0 +1,49 @@
+//Prova
+#include <stdio.h>
+
+int main() {
+    int i, num_lote, num_forno, dr, rt; 
+    float pc;
+    
+    printf("Entre com o numero de lotes produzidos: ");
+    scanf("%d",&num_lote);
+    printf("\n");
+    
+    printf("Entre com uma linha para cada lote produzido com os dados separados por um espaco em branco e na seguinte ordem: numero do forno, percentual de carbono (PC), dureza Rockwell (DR) e resistencia a tracao (RT)\n");
+    printf("\n");
+    
+   
+    
+    for(i=1;i<=num_lote; i++){
+      printf("Lote %d",i,":");
+      scanf("%d %f %d %d", &num_forno, &pc, &dr, &rt);   
+      printf("\n");  
+    }
+    
+    printf("Estatisticas");
+    
+    //for(i=0;i<=5; i++){
+      //printf("%d",i," lote(s) com grau medio de pureza de");
+      //scanf("%d %f %d %d", &num_forno, &pc, &dr, &rt);   
+      printf("\n");  
+    //}
+    
+
+    return 0;
+}
+
+
+ //for(i=0;i<=num_lote; i++){
+      //printf("Lote i", i, ": ");
+      //scanf("%d %f %d %d", &num_forno, &pc, &dr, &rt);   
+        
+    //}
+    
+    //printf("Grau de pureza dos lotes produzidos");
+
+
+
+// 5 fornos
+//três critérios: percentual de conteúdo de carbono, dureza na escala Rockwell e resistência à tração.
+
+// São realizados três testes com o aço produzido para saber se ele atende às seguintes condições: Teste 1) Percentual de conteúdo de carbono abaixo de 7% Teste 2) Dureza Rockwell maior do que 50 este 3) Resistência à tração maior do que 80000 psi
