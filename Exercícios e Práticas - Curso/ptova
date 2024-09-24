@@ -15,18 +15,25 @@ int main() {
    
     
     for(i=1;i<=num_lote; i++){
-      printf("Lote %d",i,":");
+      printf("Lote %d:",i);
       scanf("%d %f %d %d", &num_forno, &pc, &dr, &rt);   
+      printf("\n");  
+    }
+    
+    
+    //AQUI DEVE VIR CALCULOS
+     printf("Grau de pureza dos lotes produzidos\n");
+     for(i=1;i<=num_lote; i++){
+        printf("Lote %d:",i);
       printf("\n");  
     }
     
     printf("Estatisticas");
     
-    //for(i=0;i<=5; i++){
-      //printf("%d",i," lote(s) com grau medio de pureza de");
-      //scanf("%d %f %d %d", &num_forno, &pc, &dr, &rt);   
+    for(i=0;i<=5; i++){
+      printf("%d",i," lote(s) com grau medio de pureza de");
       printf("\n");  
-    //}
+    }
     
 
     return 0;
