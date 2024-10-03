@@ -1,5 +1,4 @@
 //erro
-
 #include <stdio.h>
  
 int main() {
@@ -19,7 +18,6 @@ int main() {
 //Arrumado
 //O "l" em especificadores de formato como %lf no scanf ou printf significa "long" e 
 //é utilizado para indicar que estamos lidando com tipos de dados maiores, como double ou long.
-
 #include <stdio.h>
  
 int main() {
@@ -33,3 +31,7 @@ int main() {
  
     return 0;
 }
+
+
+//%f: para números de ponto flutuante de precisão simples (tipo float no printf, ou double no scanf).
+//%lf: para números de ponto flutuante de precisão dupla (tipo double no scanf, e opcional no printf).
