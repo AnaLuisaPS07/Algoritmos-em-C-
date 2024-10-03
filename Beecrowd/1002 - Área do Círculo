@@ -13,3 +13,23 @@ int main() {
  
     return 0;
 }
+
+
+
+//Arrumado
+//O "l" em especificadores de formato como %lf no scanf ou printf significa "long" e 
+//é utilizado para indicar que estamos lidando com tipos de dados maiores, como double ou long.
+
+#include <stdio.h>
+ 
+int main() {
+  double raio, area;
+  const double PI = 3.14159;
+  
+  scanf("%lf",&raio);
+  area = PI * raio * raio;
+  
+  printf("A=%.4lf\n",area);
+ 
+    return 0;
+}
