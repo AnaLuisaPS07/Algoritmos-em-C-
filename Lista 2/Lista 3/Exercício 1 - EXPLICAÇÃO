@@ -1,1 +1,67 @@
+1. #include <stdio.h>
+Este comando inclui a biblioteca padrão de entrada e saída em C, permitindo o uso de funções como printf() e scanf().
 
+2. Função Recursiva decimal_Binario(int n)
+Esta função converte o número decimal n em seu equivalente binário e o imprime diretamente.
+
+c
+Copy code
+void decimal_Binario(int n) {
+    if (n > 1) {
+        decimal_Binario(n / 2); // Chamada recursiva
+    }
+    printf("%d", n % 2); // Imprime o resto da divisão por 2
+}
+Se n > 1, a função chama a si mesma passando n / 2 como argumento. Isso ocorre até que n seja menor ou igual a 1.
+printf("%d", n % 2) imprime o resto da divisão de n por 2. Esse resto será 0 ou 1, que são os dígitos binários.
+Como funciona a recursão:
+A recursão ocorre da seguinte forma:
+
+Cada vez que a função é chamada, ela continua dividindo o número por 2 até que n seja 1.
+Após a última chamada recursiva (quando n é 1), ela começa a retornar e imprimir o resto da divisão por 2.
+Exemplo:
+Vamos converter o número 13 para binário:
+
+A função é chamada com n = 13.
+A primeira verificação é 13 > 1, então ocorre a chamada recursiva com n = 13 / 2 = 6.
+A função é chamada novamente com n = 6, e como 6 > 1, chama-se a função com n = 6 / 2 = 3.
+Agora n = 3, que também é maior que 1, chama-se a função com n = 3 / 2 = 1.
+A função é chamada com n = 1, que é o limite. Nesse ponto, não há mais chamadas recursivas, e o resto da divisão de 1 % 2 = 1 é impresso.
+O que a função faz quando retorna:
+
+Ao retornar da chamada com n = 3, ela imprime 3 % 2 = 1.
+Ao retornar da chamada com n = 6, imprime 6 % 2 = 0.
+Ao retornar da chamada com n = 13, imprime 13 % 2 = 1.
+O resultado final impresso será 1101, que é a representação binária de 13.
+
+3. Função main()
+Esta função é a principal e responsável por obter o número do usuário, validar e chamar a função recursiva.
+
+c
+Copy code
+int main() {
+    int n;
+
+    printf("Entre com o numero natural n no formato decimal: ");
+    scanf("%d", &n);
+
+    // Validação
+    if (n < 0) {
+        printf("Valor inválido, insira um número natural.\n");
+        return 1;
+    }
+
+    // Resultado
+    printf("Representacao do numero decimal %d no formato binario: ", n);
+    decimal_Binario(n);
+    printf("\n");
+
+    return 0;
+}
+Entrada do número: scanf("%d", &n) lê um número natural digitado pelo usuário.
+Validação: Verifica se o número é negativo (n < 0). Se for, imprime uma mensagem de erro e encerra o programa.
+Chamada da função: Se o número for válido, a função decimal_Binario(n) é chamada para converter e imprimir o número em binário.
+Passos de execução:
+O usuário insere um número decimal natural.
+O programa verifica se o número é válido (não-negativo).
+O número é convertido para binário e impresso na tela.
