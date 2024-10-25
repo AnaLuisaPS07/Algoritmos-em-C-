@@ -1,1 +1,21 @@
+Elaborar um programa na linguagem C para receber um vetor com n elementos inteiros e ordenar esses elementos tanto em ordem crescente como em ordem decrescente usando o algoritmo conhecido como INSERTION SORT. Só serão aceitos programas que usem esse algoritmo, mesmo que os resultados dos casos de teste estejam corretos. O número de elementos do vetor deve ser a primeira entrada de dados e deve ser um número inteiro maior do que zero. Os elementos do vetor deverão ser informados em seguida e eles não precisam ser distintos.
 
+Exemplo de formatação de mensagens para validação dos casos de teste na plataforma GDBOnline.
+
+ 
+
+            Exemplo
+
+Entre com o numero de elementos do vetor a ser ordenado: 12
+
+Entre com os elementos do vetor:
+
+19 5 9 27 9 36 4 8 27 22 1 2
+
+Vetor classificado em ordem crescente:
+
+1 2 4 5 8 9 9 19 22 27 27 36
+
+Vetor classificado em ordem decrescente:
+
+36 27 27 22 19 9 9 8 5 4 2 1
