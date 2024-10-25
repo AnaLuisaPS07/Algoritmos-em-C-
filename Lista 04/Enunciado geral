@@ -1,8 +1,9 @@
-Elaborar um programa na linguagem C para receber um vetor com n elementos inteiros e ordenar esses elementos tanto em ordem crescente como em ordem decrescente usando o algoritmo conhecido como INSERTION SORT. 
-Só serão aceitos programas que usem esse algoritmo, mesmo que os resultados dos casos de teste estejam corretos. 
+Elaborar um programa na linguagem C para receber um vetor com n elementos inteiros e ordenar esses elementos 
+tanto em ordem crescente como em ordem decrescente usando o algoritmo conhecido como INSERTION SORT/SELECTION SORT/BUBBLE SORT/
+MERGE SORT/QUICK SORT. Só serão aceitos programas que usem esse algoritmo, 
+mesmo que os resultados dos casos de teste estejam corretos. 
 O número de elementos do vetor deve ser a primeira entrada de dados e deve ser um número inteiro maior do que zero. 
 Os elementos do vetor deverão ser informados em seguida e eles não precisam ser distintos.
-
 
  
 Exemplo
