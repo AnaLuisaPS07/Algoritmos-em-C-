@@ -1,20 +1,22 @@
+//Lista 4 - Exercício 1
+
 #include <stdio.h>
 
-void insertionSort(int arr[], int n, int ascending) {
+void insertionSort(int arr[], int n, int crescent) {
     for (int i = 1; i < n; i++) {
-        int key = arr[i];
-        int j = i - 1;
+        int key = arr[i]; //elemento atual
+        int j = i - 1; //elemento anterior 
 
-        // Ordenação em ordem crescente
-        if (ascending) {
-            while (j >= 0 && arr[j] > key) {
+        //ordenar em ordem crescente
+        if (crescent) {
+            while (j >= 0 && arr[j] > key) { //maior
                 arr[j + 1] = arr[j];
                 j = j - 1;
             }
         }
-        // Ordenação em ordem decrescente
+        //ordenar em ordem decrescente
         else {
-            while (j >= 0 && arr[j] < key) {
+            while (j >= 0 && arr[j] < key) { //menor
                 arr[j + 1] = arr[j];
                 j = j - 1;
             }
@@ -23,7 +25,7 @@ void insertionSort(int arr[], int n, int ascending) {
     }
 }
 
-void printArray(int arr[], int n) {
+void showArray(int arr[], int n) {
     for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
     }
@@ -36,7 +38,7 @@ int main() {
     printf("Entre com o numero de elementos do vetor a ser ordenado: ");
     scanf("%d", &n);
 
-    // Validação do número de elementos
+    //validação 
     if (n <= 0) {
         printf("Numero invalido de elementos.\n");
         return 1;
@@ -48,16 +50,15 @@ int main() {
         scanf("%d", &arr[i]);
     }
 
-    // Ordenação em ordem crescente
+    //mostrar o vetor em ordem crescente
     insertionSort(arr, n, 1);
     printf("Vetor classificado em ordem crescente:\n");
-    printArray(arr, n);
+    showArray(arr, n);
 
-    // Ordenação em ordem decrescente
+    //mostrar o vetor em ordem decrescente
     insertionSort(arr, n, 0);
     printf("Vetor classificado em ordem decrescente:\n");
-    printArray(arr, n);
+    showArray(arr, n);
 
     return 0;
 }
-
