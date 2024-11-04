@@ -1,1 +1,6 @@
-Constante – O(1), Logarítmica – O(log n), Linear – O(n), Quadrática – O(n2), Cúbica – O(n3), Exponencial – O(2n). 
+Constante – O(1), 
+Logarítmica – O(log n), 
+Linear – O(n), 
+Quadrática – O(n2), 
+Cúbica – O(n3), 
+Exponencial – O(2n). 
