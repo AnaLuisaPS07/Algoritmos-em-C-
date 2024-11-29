@@ -4,17 +4,21 @@
 
 int main() {
    int n, h, m, c;
-   int criticos;
+   int criticos = 0;
    
   printf("Entre com o numero de pessoas que chegaram para a triagem: ");
   scanf("%d", &n);
-
-  printf("Entre com os dados de triagem da pessoa");
-  scanf("%d %d", &h, &m);
+ 
+  for (int i = 1; i <= n; i++) {
+    printf("Entre com os dados de triagem da pessoa", i);
+    scanf("%d %d", &h, &m);
+    
+    int arrival = h * 60 + m; //converte o horario de chegada em minutos e somar com os minutos que já tinha
+    int waiting;
+    
+  }
   
-  printf("Numero de pessoas que atingem a condicao critica ainda na fila de atendimento:", criticos);
+    printf("Numero de pessoas que atingem a condicao critica ainda na fila de atendimento:", criticos);
   
-   
-
     return 0;
 }
