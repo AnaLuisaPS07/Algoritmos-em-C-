@@ -1,6 +1,6 @@
 //Lista 5 - Exercício 1
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h> //alocação dinâmica e funções auxiliares
 
 //estrutura para armazenar os dados de cada paciente
 typedef struct Patient {
