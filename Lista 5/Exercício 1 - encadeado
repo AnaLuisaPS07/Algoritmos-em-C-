@@ -1,80 +1,78 @@
-//implementação do chat usando listas encadeadas com base no que eu havia feito
-
+//Lista 5 - Exercício 1
 #include <stdio.h>
 #include <stdlib.h>
 
-// Estrutura para armazenar os dados de cada paciente
-typedef struct Paciente {
-    int h, m, c;               // Hora, minuto, tempo até condição crítica
-    struct Paciente *prox;     // Ponteiro para o próximo paciente
-} Paciente;
+//estrutura para armazenar os dados de cada paciente
+typedef struct Patient {
+    int h, m, c;              
+    struct Patient *next; //ponteiro para o próximo paciente
+} Patient;
 
-// Função para criar um novo nó da lista encadeada
-Paciente* criarPaciente(int h, int m, int c) {
-    Paciente *novo = (Paciente*) malloc(sizeof(Paciente));
-    if (novo == NULL) {
+//cria um novo nó da lista encadeada
+Patient* createPatient(int h, int m, int c) {
+    Patient *newNode = (Patient*) malloc(sizeof(Patient));
+    if (newNode == NULL) {
         printf("Erro ao alocar memória.\n");
         exit(1);
     }
-    novo->h = h;
-    novo->m = m;
-    novo->c = c;
-    novo->prox = NULL;
-    return novo;
+    newNode->h = h;
+    newNode->m = m;
+    newNode->c = c;
+    newNode->next = NULL;
+    return newNode;
 }
 
-// Função para adicionar um paciente ao final da lista encadeada
-void adicionarPaciente(Paciente **inicio, int h, int m, int c) {
-    Paciente *novo = criarPaciente(h, m, c);
-    if (*inicio == NULL) {
-        *inicio = novo; // Primeiro nó da lista
+//adicionar um paciente ao final da lista encadeada
+void addPatient(Patient **head, int h, int m, int c) {
+    Patient *newNode = createPatient(h, m, c);
+    if (*head == NULL) {
+        *head = newNode; //1° nó da lista
     } else {
-        Paciente *temp = *inicio;
-        while (temp->prox != NULL) {
-            temp = temp->prox;
+        Patient *temp = *head;
+        while (temp->next != NULL) {
+            temp = temp->next;
         }
-        temp->prox = novo; // Adiciona ao final da lista
+        temp->next = newNode; //adiciona ao final da lista
     }
 }
 
-// Função para processar os pacientes e contar os que atingem condição crítica
-int simularAtendimentos(Paciente *inicio) {
-    int next_patient = 7 * 60; // Começa às 07h, ou seja, 420 minutos
-    int critical = 0;         // Quantidade de pacientes em estado crítico
+//processa os pacientes e conta os que atingem condição crítica
+int simulateAttendances(Patient *head) {
+    int next_patient = 7 * 60; //começa às 07h, ou seja, 420 minutos
+    int critical = 0; //quantidade de pacientes em estado crítico
 
-    Paciente *atual = inicio;
-    while (atual != NULL) {
-        int arrival = atual->h * 60 + atual->m; // Converte hora/minuto de chegada em minutos
-        int critical_time = arrival + atual->c; // Horário em que o paciente entrará em estado crítico
+    Patient *current = head;
+    while (current != NULL) {
+        int arrival = current->h * 60 + current->m; //converte a hora para minuto
+        int critical_time = arrival + current->c; //horário em que o paciente entrará em estado crítico
 
-        if (arrival >= next_patient) { // Atendimento imediato
+        if (arrival >= next_patient) { //atendimento imediato
             next_patient = arrival + 30;
-        } else { // Aguarda na fila para atendimento
+        } else { //aguarda na fila para atendimento
             if (critical_time < next_patient) {
-                critical++; // Paciente entrou em estado crítico na fila
+                critical++; //paciente entrou em estado crítico na fila
             }
-            next_patient += 30; // Próximo paciente será atendido em 30 minutos
+            next_patient += 30; //próximo atendimento em 30 minutos
         }
 
-        atual = atual->prox; // Avança para o próximo paciente
+        current = current->next; //avança para o próximo paciente
     }
 
     return critical;
 }
 
-// Função para liberar a memória da lista encadeada
-void liberarLista(Paciente *inicio) {
-    Paciente *temp;
-    while (inicio != NULL) {
-        temp = inicio;
-        inicio = inicio->prox;
+//libera a memória da lista encadeada
+void freeList(Patient *head) {
+    Patient *temp;
+    while (head != NULL) {
+        temp = head;
+        head = head->next;
         free(temp);
     }
 }
 
-// Função principal
 int main() {
-    Paciente *listaPacientes = NULL;
+    Patient *patientList = NULL;
     int n, h, m, c;
 
     printf("Entre com o numero de pessoas que chegaram para a triagem: ");
@@ -83,12 +81,12 @@ int main() {
     for (int i = 1; i <= n; i++) {
         printf("Entre com os dados de triagem da pessoa %d: ", i);
         scanf("%d %d %d", &h, &m, &c);
-        adicionarPaciente(&listaPacientes, h, m, c);
+        addPatient(&patientList, h, m, c);
     }
 
-    int critical = simularAtendimentos(listaPacientes);
+    int critical = simulateAttendances(patientList);
     printf("Numero de pessoas que atingem a condicao critica ainda na fila de atendimento: %d\n", critical);
 
-    liberarLista(listaPacientes); // Libera a memória alocada
+    freeList(patientList); //libera a memória alocada
     return 0;
 }
