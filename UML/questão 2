@@ -1,0 +1,69 @@
+@startuml
+class PedidoDeVenda {
+    - id: int
+    - data: Date
+    - total: float
+    + calcularTotal(): float
+}
+
+class StatusPedidoDeVenda {
+    - status: string
+    + alterarStatus(novoStatus: string): void
+}
+
+class DetalhesPedidoDeVenda {
+    - quantidade: int
+    - precoUnitario: float
+    + calcularSubtotal(): float
+}
+
+class Livro {
+    - titulo: string
+    - autor: string
+    - preco: float
+    + getInformacoes(): string
+}
+
+class Cliente {
+    - nome: string
+    - endereco: string
+    - telefone: string
+    + realizarCompra(): void
+}
+
+class Pagamento {
+    - valor: float
+    + efetuarPagamento(): bool
+}
+
+class Credito {
+    - numeroCartao: string
+    - validade: Date
+    + autorizar(): bool
+}
+
+class Dinheiro {
+    + confirmarRecebimento(): bool
+}
+
+class Cheque {
+    - numeroCheque: string
+    + verificarValidade(): bool
+}
+
+class TransferenciaBancaria {
+    - bancoOrigem: string
+    - bancoDestino: string
+    + realizarTransferencia(): bool
+}
+
+PedidoDeVenda "1" o-- "1..*" DetalhesPedidoDeVenda
+PedidoDeVenda "1" --> "1" StatusPedidoDeVenda
+PedidoDeVenda "1" --> "1..*" Pagamento
+DetalhesPedidoDeVenda "1" --> "1" Livro
+PedidoDeVenda "1" --> "1" Cliente
+Pagamento <|-- Credito
+Pagamento <|-- Dinheiro
+Pagamento <|-- Cheque
+Pagamento <|-- TransferenciaBancaria
+@enduml
