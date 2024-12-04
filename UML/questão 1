@@ -1,0 +1,36 @@
+@startuml
+|Cliente|
+start
+:Contactar livraria;
+:Consultar livros;
+if (Livros aprovados?) then (Sim)
+  :Escolher forma de pagamento;
+  :Efetuar pagamento;
+  |Balconista|
+  :Efetuar pedido ao gerente;
+  |Gerente|
+  :Emitir pedido;
+  :Enviar pedido ao fornecedor;
+  |Fornecedor|
+  :Receber pedido;
+  if (Pedido aprovado?) then (Sim)
+    :Emitir fatura;
+    :Enviar fatura ao gerente;
+    |Gerente|
+    :Efetuar pagamento ao fornecedor;
+    |Fornecedor|
+    :Receber pagamento;
+    :Enviar livros;
+    |Gerente|
+    :Receber livros;
+    :Repassar livros ao cliente;
+    |Cliente|
+    stop
+  else (Não)
+    stop
+  endif
+else (Não)
+  :Consultar novos livros;
+  back to :Consultar livros;
+endif
+@enduml
