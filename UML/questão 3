@@ -1,0 +1,47 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor Cliente
+actor Balconista
+actor Gerente
+actor Fornecedor
+
+rectangle SistemaDeGestaoDeLivros {
+    usecase "Exibir catálogo de livros" as UC1
+    usecase "Registrar seleção de livros" as UC2
+    usecase "Processar pagamento" as UC3
+    usecase "Registrar transação de compra" as UC4
+    usecase "Formalizar pedido de livros" as UC5
+    usecase "Emitir pedido ao fornecedor" as UC6
+    usecase "Receber e registrar entrega de livros" as UC7
+    usecase "Registrar entrega ao cliente" as UC8
+}
+
+rectangle SistemaFornecedor {
+    usecase "Analisar pedido" as UC9
+    usecase "Emitir fatura" as UC10
+    usecase "Enviar livros" as UC11
+}
+
+Cliente --> UC1
+UC1 --> UC2
+UC2 --> UC3
+UC3 --> UC4
+
+Balconista --> UC5
+
+Gerente --> UC7
+UC7 --> UC6
+UC6 --> UC9
+
+Fornecedor --> UC9
+UC9 --> UC10
+Gerente --> UC10
+Gerente --> UC7
+UC7 --> UC8
+
+Fornecedor --> UC11
+UC11 --> UC7
+
+@enduml
