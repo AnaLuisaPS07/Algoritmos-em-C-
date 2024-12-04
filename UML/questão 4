@@ -1,0 +1,17 @@
+@startuml
+actor Cliente
+boundary PBusca
+control CBusca
+entity ELivro
+database LivroBancoDados
+
+Cliente -> PBusca: enviarSolicitacaoDePesquisa(filtros)
+PBusca -> CBusca: aceitarSolicitacao(filtros)
+CBusca -> LivroBancoDados: consultarLivros(filtros)
+LivroBancoDados --> CBusca: resultados
+
+CBusca -> ELivro: instanciar(resultados)
+CBusca --> PBusca: exibirResultados(resultados)
+Cliente <-- PBusca: visualizarResultados(resultados)
+
+@enduml
