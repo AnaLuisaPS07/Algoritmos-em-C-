@@ -1,98 +1,53 @@
-//cheio de erro
+//cheio de erro, só passou em 1
 
+//
 
 #include <stdio.h>
 #include <stdlib.h>
 
-// Definição do nó da lista encadeada
-typedef struct No {
-    int senha;
-    struct No* prox;
-} No;
-
-// Função para criar um novo nó
-No* criarNo(int senha) {
-    No* novo = (No*)malloc(sizeof(No));
-    if (novo == NULL) {
-        printf("Erro ao alocar memória!\n");
-        exit(1);
-    }
-    novo->senha = senha;
-    novo->prox = NULL;
-    return novo;
-}
-
-// Função para inserir na fila (no final da lista)
-void inserir(No** cabeca, int senha) {
-    No* novo = criarNo(senha);
-    if (*cabeca == NULL) {
-        *cabeca = novo;
-    } else {
-        No* temp = *cabeca;
-        while (temp->prox != NULL) {
-            temp = temp->prox;
-        }
-        temp->prox = novo;
-    }
-}
-
-// Função para remover da fila (da frente da lista)
-void remover(No** cabeca, int senha) {
-    if (*cabeca == NULL) {
-        printf("SENHA NAO EXISTE NA FILA\n");
-        return;
-    }
-
-    No* temp = *cabeca;
-    No* ant = NULL;
-
-    // Caso especial se a senha estiver na cabeça da lista
-    if (temp != NULL && temp->senha == senha) {
-        *cabeca = temp->prox;
-        free(temp);
-        return;
-    }
-
-    // Procurando a senha na lista
-    while (temp != NULL && temp->senha != senha) {
-        ant = temp;
-        temp = temp->prox;
-    }
-
-    if (temp == NULL) {
-        printf("SENHA NAO EXISTE NA FILA\n");
-        return;
-    }
-
-    // Removendo o nó
-    ant->prox = temp->prox;
-    free(temp);
-}
+#define MAX_FILA 1000
 
 // Função para verificar se a senha já existe na fila
-int existe(No* cabeca, int senha) {
-    No* temp = cabeca;
-    while (temp != NULL) {
-        if (temp->senha == senha) {
+int existe(int fila[], int n, int senha) {
+    for (int i = 0; i < n; i++) {
+        if (fila[i] == senha) {
             return 1; // Senha encontrada
         }
-        temp = temp->prox;
     }
     return 0; // Senha não encontrada
 }
 
+// Função para remover a senha da fila
+void remover(int fila[], int *n, int senha) {
+    int i;
+    for (i = 0; i < *n; i++) {
+        if (fila[i] == senha) {
+            break;
+        }
+    }
+
+    if (i == *n) {
+        printf("SENHA NAO EXISTE NA FILA\n");
+        return;
+    }
+
+    // Remover o elemento
+    for (int j = i; j < *n - 1; j++) {
+        fila[j] = fila[j + 1];
+    }
+    (*n)--; // Reduz o tamanho da fila
+}
+
 // Função para imprimir a configuração final da fila
-void imprimir(No* cabeca) {
-    if (cabeca == NULL) {
+void imprimir(int fila[], int n) {
+    if (n == 0) {
         printf("VAZIA\n");
     } else {
-        No* temp = cabeca;
-        while (temp != NULL) {
-            printf("%d", temp->senha);
-            if (temp->prox != NULL) {
+        for (int i = 0; i < n; i++) {
+            printf("%d", fila[i]);
+            if (i < n - 1) {
                 printf(" ");
             }
-            temp = temp->prox;
         }
         printf("\n");
     }
@@ -100,13 +55,14 @@ void imprimir(No* cabeca) {
 
 // Função principal
 int main() {
-    No* fila = NULL;
+    int fila[MAX_FILA]; // A fila é representada por um vetor
+    int n = 0; // Número atual de pessoas na fila
     int operacao, senha;
 
     while (1) {
         char comando[10];
-        printf("Movimentacao durante a formacao da fila:\n");
-        scanf("%s", comando);
+       printf("Movimentacao durante a formacao da fila:\n");  
+       scanf("%s", comando);
 
         // Se for "FIM", termina o processo
         if (comando[0] == 'F') {
@@ -116,23 +72,23 @@ int main() {
         // Lê a operação e a senha
         scanf("%d %d", &operacao, &senha);
 
-        // A operação de entrada
+        // A operação de entrada (1)
         if (operacao == 1) {
-            if (existe(fila, senha)) {
+            if (existe(fila, n, senha)) {
                 printf("SENHA JA EXISTE NA FILA\n");
             } else {
-                inserir(&fila, senha);
+                fila[n++] = senha; // Insere a senha no final da fila
             }
         }
-        // A operação de saída
+        // A operação de saída (2)
         else if (operacao == 2) {
-            remover(&fila, senha);
+            remover(fila, &n, senha);
         }
     }
 
     // Exibe a configuração final da fila
     printf("Configuracao final apos o periodo de formacao da fila: ");
-    imprimir(fila);
+    imprimir(fila, n);
 
     return 0;
 }
