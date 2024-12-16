@@ -1,0 +1,110 @@
+//4
+
+#include <stdio.h>
+#include <stdlib.h>
+
+// Estrutura para representar cada criança no círculo
+typedef struct Node {
+    int ficha;            // Valor da ficha da criança
+    struct Node* next;    // Ponteiro para o próximo nó
+} Node;
+
+// Função para criar um novo nó (criança)
+Node* criarNo(int ficha) {
+    Node* novo = (Node*)malloc(sizeof(Node));
+    if (novo == NULL) {
+        printf("Erro ao alocar memoria.\n");
+        exit(1);
+    }
+    novo->ficha = ficha;
+    novo->next = NULL;
+    return novo;
+}
+
+// Função para inserir um nó no final da lista circular
+Node* inserirNoFinal(Node* head, int ficha) {
+    Node* novo = criarNo(ficha);
+    if (head == NULL) {
+        novo->next = novo; // Aponta para si mesmo
+        return novo;
+    }
+    Node* temp = head;
+    while (temp->next != head) {
+        temp = temp->next;
+    }
+    temp->next = novo;
+    novo->next = head;
+    return head;
+}
+
+// Função para eliminar uma criança (nó) da lista
+Node* eliminarNo(Node* head, Node* prev, Node* atual) {
+    if (atual == head) { // Caso o nó eliminado seja o primeiro
+        head = atual->next;
+    }
+    prev->next = atual->next;
+    free(atual);
+    return head;
+}
+
+// Função principal que simula a brincadeira
+int determinarVencedor(Node* head) {
+    Node* atual = head;
+    Node* prev = NULL;
+
+    while (atual->next != atual) { // Enquanto houver mais de uma criança
+        int contagem = atual->ficha;
+        int sentido = contagem % 2 == 0 ? 1 : -1; // Par = horário (1), Ímpar = anti-horário (-1)
+
+        // Ajustar prev e atual conforme o sentido e a contagem
+        for (int i = 0; i < contagem; i++) {
+            prev = atual;
+            if (sentido == 1) { // Sentido horário
+                atual = atual->next;
+            } else { // Sentido anti-horário
+                Node* temp = head;
+                while (temp->next != atual) {
+                    temp = temp->next;
+                }
+                atual = temp;
+            }
+        }
+
+        // Eliminar a criança e atualizar o ponteiro de início
+        head = eliminarNo(head, prev, atual);
+        atual = prev->next; // Reiniciar a contagem a partir do próximo nó
+    }
+
+    int vencedor = atual->ficha;
+    free(atual);
+    return vencedor;
+}
+
+// Função principal
+int main() {
+    int n, ficha;
+    Node* head = NULL;
+
+    printf("Entre com o numero de criancas que vao participar da brincadeira: \n");
+    scanf("%d", &n);
+
+    if (n <= 0 || n > 100) {
+        printf("Numero de criancas invalido.\n");
+        return 1;
+    }
+
+    printf("\nEntre com os valores das fichas das criancas na ordem em que elas entraram:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &ficha);
+        if (ficha <= 0 || ficha > 500) {
+            printf("Valor da ficha invalido.\n");
+            return 1;
+        }
+        head = inserirNoFinal(head, ficha);
+    }
+
+    int vencedor = determinarVencedor(head);
+    printf("\nFicha da crianca que venceu a brincadeira: %d\n", vencedor);
+
+    return 0;
+}
