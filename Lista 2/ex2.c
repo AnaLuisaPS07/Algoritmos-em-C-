@@ -1,4 +1,5 @@
 //Lista 2 - exercício 2
+//passou
 
 #include <stdio.h>
 

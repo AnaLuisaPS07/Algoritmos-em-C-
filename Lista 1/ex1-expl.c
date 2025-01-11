@@ -101,5 +101,5 @@ printf("Menor media da turma: %.1f (Aluno: %d)\n", menor_media, aluno_menor_medi
 return 0;
 }
 
-Finalmente, o código calcula a média geral da turma, exibe essa média, 
-assim como as maiores e menores médias e os alunos que as obtiveram.
+//Finalmente, o código calcula a média geral da turma, exibe essa média, 
+//assim como as maiores e menores médias e os alunos que as obtiveram.

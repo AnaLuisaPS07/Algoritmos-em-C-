@@ -1,4 +1,5 @@
 //Exercício 1 - lista 2
+//(2-4 teste)
 
 #include <stdio.h>
 #include <string.h>
