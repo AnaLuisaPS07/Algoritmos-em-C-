@@ -1,3 +1,5 @@
+//linhas separadas
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -15,7 +17,7 @@ typedef struct {
 int main() {
     int n;
     
-    // Solicita o número de times e verifica validade
+    //solicita o número de times e verifica validade
     do {
         printf("Entre com o numero de times participantes: ");
         scanf("%d", &n);
@@ -26,14 +28,14 @@ int main() {
         }
     } while (n < 2);
     
-    Time times[MAX_TIMES] = {0};  // Inicializa todos os times com zero
+    Time times[MAX_TIMES] = {0};  //inicializa todos os times com zero
     
     int placar1, placar2, maior_diferenca = 0;
-    int jogos[n][n][2];  // Matriz para armazenar os placares de cada jogo
+    int jogos[n][n][2];  //matriz para armazenar os placares de cada jogo
     char jogos_maior_diferenca[MAX_TIMES * MAX_TIMES][50];
     int contador_maior_diferenca = 0;
     
-    // Leitura dos placares dos jogos
+    //leitura dos placares dos jogos
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             if (i != j) {
@@ -50,7 +52,7 @@ int main() {
                 jogos[i][j][0] = placar1;
                 jogos[i][j][1] = placar2;
 
-                // Atualiza as estatísticas dos times
+                //atualiza as estatísticas dos times
                 if (placar1 > placar2) {
                     times[i].vitorias++;
                     times[j].derrotas++;
@@ -79,7 +81,7 @@ int main() {
         }
     }
 
-    // Identifica os times com mais vitórias, derrotas e empates
+    //identifica os times com mais vitórias, derrotas e empates
     int max_vitorias = 0, max_derrotas = 0, max_empates = 0;
     for (int i = 0; i < n; i++) {
         if (times[i].vitorias > max_vitorias) {

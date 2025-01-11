@@ -1,5 +1,5 @@
 //Exercicio1
-// Consegui fazer até aqui 
+// Consegui fazer até aqui por enquanto
 
 #include <stdio.h>
 

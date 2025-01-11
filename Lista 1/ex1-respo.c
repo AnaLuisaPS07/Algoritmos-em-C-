@@ -20,10 +20,10 @@ int main() {
     } while (n <= 0 || n > 50);
     //''Enquanto''
 
-// Loop para validar as notas
+//loop para validar as notas
     for (i = 1; i <= n; i++) {
         int notas_validas = 0; //falso
-        while (!notas_validas) { // enquanto notas_validas for falso (0), o loop continua
+        while (!notas_validas) { //enquanto notas_validas for falso (0), o loop continua
             printf("Notas aluno %d: ", i);
             scanf("%f %f %f %f", &nota1, &nota2, &nota3, &nota4);
             printf("\n");
@@ -32,31 +32,31 @@ int main() {
                 (nota3 < 0 || nota3 > 10) || (nota4 < 0 || nota4 > 10)) {
                 printf("Todas as notas do aluno devem ser maiores ou iguais a zero e menores ou iguais a 10\n\n");
             } else {
-                notas_validas = 1; //Verdadeiro, fim de loop
+                notas_validas = 1; //verdadeiro, fim de loop
             }
         }
 
-        // Lógica de cálculo das médias
+        //lógica de cálculo das médias
         if (nota1 == nota2 && nota2 == nota3 && nota3 == nota4) {
-            media_final = (nota1 + nota2 + nota3 + nota4) * 2.5 / 10.0; // notas iguais
+            media_final = (nota1 + nota2 + nota3 + nota4) * 2.5 / 10.0; //notas iguais
             
         } else if ((nota1 > nota2 && nota2 == nota3 && nota3 == nota4) || 
                    (nota2 > nota1 && nota1 == nota3 && nota3 == nota4) || 
                    (nota3 > nota1 && nota1 == nota2 && nota2 == nota4) || 
                    (nota4 > nota1 && nota1 == nota2 && nota2 == nota3)) {
-            media_final = (nota1 * 4 + nota2 * 2 + nota3 * 2 + nota4 * 2) / 10.0; //Uma maior e o resto igual
+            media_final = (nota1 * 4 + nota2 * 2 + nota3 * 2 + nota4 * 2) / 10.0; //uma maior e o resto igual
             
         } else if ((nota1 < nota2 && nota2 == nota3 && nota3 == nota4) || 
                    (nota2 < nota1 && nota1 == nota3 && nota3 == nota4) || 
                    (nota3 < nota1 && nota1 == nota2 && nota2 == nota4) || 
                    (nota4 < nota1 && nota1 == nota2 && nota2 == nota3)) {
-            media_final = (nota1 * 1 + nota2 * 3 + nota3 * 3 + nota4 * 3) / 10.0;  // uma menor e o resto igual
+            media_final = (nota1 * 1 + nota2 * 3 + nota3 * 3 + nota4 * 3) / 10.0;  //uma menor e o resto igual
             //nesse caso a menor de todas é a primeira
             
         } else { //SENAO
             float maior, segunda, terceira, menor;
 
-            // Ordena as notas para a ponderação correta
+            //ordena as notas para a ponderação correta
             //PRIMEIRO CASO
             if (nota1 >= nota2 && nota1 >= nota3 && nota1 >= nota4) {
                 maior = nota1; 
@@ -177,7 +177,7 @@ int main() {
                         menor = nota1;
                     }
                 }
-            // QUARTO CASO    
+            //QUARTO CASO    
             } else {
                 maior = nota4; 
 

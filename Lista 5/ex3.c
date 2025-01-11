@@ -4,13 +4,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Estrutura para um nó da lista encadeada
+//estrutura para um nó da lista encadeada
 typedef struct Node {
     char data;
     struct Node *next;
 } Node;
 
-// Função para empilhar um elemento
+//função para empilhar um elemento
 void push(Node **top, char value) {
     Node *newNode = (Node *)malloc(sizeof(Node));
     if (newNode == NULL) {
@@ -22,10 +22,10 @@ void push(Node **top, char value) {
     *top = newNode;
 }
 
-// Função para desempilhar um elemento
+//função para desempilhar um elemento
 char pop(Node **top) {
     if (*top == NULL) {
-        return '\0'; // Retorna caractere nulo se a pilha estiver vazia
+        return '\0'; //retorna caractere nulo se a pilha estiver vazia
     }
     Node *temp = *top;
     char value = temp->data;
@@ -34,30 +34,30 @@ char pop(Node **top) {
     return value;
 }
 
-// Função para verificar se a pilha está vazia
+//função para verificar se a pilha está vazia
 int isEmpty(Node *top) {
     return top == NULL;
 }
 
-// Função para verificar o balanceamento dos parênteses
+//função para verificar o balanceamento dos parênteses
 int verificarParenteses(char *expressao) {
-    Node *pilha = NULL; // Inicializa a pilha
+    Node *pilha = NULL; //inicializa a pilha
 
     for (int i = 0; expressao[i] != '\0'; i++) {
         if (expressao[i] == '(') {
             push(&pilha, '(');
         } else if (expressao[i] == ')') {
             if (isEmpty(pilha)) {
-                return 0; // Parêntese de fechamento sem abertura correspondente
+                return 0; //parêntese de fechamento sem abertura correspondente
             }
             pop(&pilha);
         }
     }
 
-    // Verifica se há parênteses de abertura restantes na pilha
+    //verifica se há parênteses de abertura restantes na pilha
     int resultado = isEmpty(pilha);
 
-    // Libera a memória da pilha, se necessário
+    //libera a memória da pilha, se necessário
     while (!isEmpty(pilha)) {
         pop(&pilha);
     }
@@ -71,7 +71,7 @@ int main() {
     printf("Entre com a expressão a ser avaliada: ");
     fgets(expressao, sizeof(expressao), stdin);
 
-    // Remove o caractere de nova linha, se presente
+    //remove o caractere de nova linha, se presente
     size_t len = strlen(expressao);
     if (len > 0 && expressao[len - 1] == '\n') {
         expressao[len - 1] = '\0';

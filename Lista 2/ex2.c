@@ -11,12 +11,12 @@ int main() {
     int mes, num_vendedores, nota_fiscal, dia, codigo_vendedor, total_vendas = 0;
     int vendas_por_dia[MAX_DIAS] = {0}, vendas_por_vendedor[MAX_VENDEDORES + 1] = {0};
     int notas_fiscais[MAX_VENDAS] = {0}; 
-    int total_notas_fiscais = 0;       // Contador de notas fiscais inseridas
+    int total_notas_fiscais = 0;       //contador de notas fiscais inseridas
     float valor_venda, total_vendas_mes = 0.0, total_comissao_mes = 0.0;
     float total_vendedor[MAX_VENDEDORES + 1] = {0.0}, comissao_vendedor[MAX_VENDEDORES + 1] = {0.0};
     float total_vendas_por_dia[MAX_DIAS] = {0.0}, vendas_dia_vendedor[MAX_VENDEDORES + 1][MAX_DIAS] = {{0.0}};
 
-    //Entrada do mês
+    //entrada do mês
     do {
         printf("Entre com o mes em que as vendas foram realizadas: ");
         scanf("%d", &mes);
@@ -26,7 +26,7 @@ int main() {
         }
     } while (mes < 1 || mes > 12);
 
-    //Entrada do número de vendedores
+    //entrada do número de vendedores
     do {
         printf("Entre com o numero de vendedores que trabalharam no mes: ");
         scanf("%d", &num_vendedores);
@@ -39,38 +39,38 @@ int main() {
     printf("Entre com as vendas. Para cada venda realizada no mes informar o numero da nota fiscal que a identifica, o codigo do vendedor responsavel, o dia do mes em que foi feita e o valor da venda em reais. Quando desejar finalizar a entrada de dados digite o numero zero para a nota fiscal.\n");
     printf("\n");
 
-    //Entrada das vendas
+    //entrada das vendas
     while (1) {
-        int erro = 0;  //Verifica se há algum erro
+        int erro = 0;  //verifica se há algum erro
 
         printf("Venda: ");
         scanf("%d %d %d %f", &nota_fiscal, &codigo_vendedor, &dia, &valor_venda);
         printf("\n");
         
-        //Encerrar se o valor inserido for 0
+        //encerrar se o valor inserido for 0
         if (nota_fiscal == 0) {
             break;  
         }
 
-        //Validação do código do vendedor
+        //validação do código do vendedor
         if (codigo_vendedor < 1 || codigo_vendedor > num_vendedores) {
             printf("Codigo do vendedor invalido\n");
             erro = 1;
         }
 
-        //Validação do dia da venda
+        //validação do dia da venda
         if (dia < 1 || (mes == 2 && dia > 28) || ((mes == 4 || mes == 6 || mes == 9 || mes == 11) && dia > 30) || dia > 31) {
             printf("Dia da venda invalido\n");
             erro = 1;
         }
 
-        //Validação do valor da venda
+        //validação do valor da venda
         if (valor_venda <= 0) {
             printf("Valor da venda invalida\n");
             erro = 1;
         }
 
-        //Validação da nota fiscal, se os outros campos forem inválidos não regista os valores
+        //validação da nota fiscal, se os outros campos forem inválidos não regista os valores
         if (!erro) {
             int nota_repetida = 0;
             for (int i = 0; i < total_notas_fiscais; i++) {
@@ -90,22 +90,22 @@ int main() {
             continue;  
         }
 
-        //Registrar a venda
-        notas_fiscais[total_notas_fiscais++] = nota_fiscal;  //Armazena a nota fiscal
+        //registrar a venda
+        notas_fiscais[total_notas_fiscais++] = nota_fiscal;  //armazena a nota fiscal
 
-        //Atualiza os totais
+        //atualiza os totais
         total_vendas_mes += valor_venda;
         vendas_por_dia[dia]++;
         total_vendas_por_dia[dia] += valor_venda;
 
         vendas_por_vendedor[codigo_vendedor]++;
         total_vendedor[codigo_vendedor] += valor_venda;
-        vendas_dia_vendedor[codigo_vendedor][dia] += valor_venda;  //Registra a venda por dia para o vendedor
+        vendas_dia_vendedor[codigo_vendedor][dia] += valor_venda;  //registra a venda por dia para o vendedor
 
         total_vendas++;
     }
 
-    //Calcula comissão de cada vendedor
+    //calcula comissão de cada vendedor
     for (int i = 1; i <= num_vendedores; i++) {
         if (total_vendedor[i] <= 2000) {
             comissao_vendedor[i] = total_vendedor[i] * 0.05;
@@ -128,16 +128,16 @@ int main() {
                 }
             }
 
-            //Total de vendas dividido pelo número de dias no mês
-            int dias_no_mes = 31;  //Meses com 31 dias
-            if (mes == 2) dias_no_mes = 28;  //Fevereiro
-            if (mes == 4 || mes == 6 || mes == 9 || mes == 11) dias_no_mes = 30;  //Meses com 30 dias
+            //total de vendas dividido pelo número de dias no mês
+            int dias_no_mes = 31;  //meses com 31 dias
+            if (mes == 2) dias_no_mes = 28;  //fevereiro
+            if (mes == 4 || mes == 6 || mes == 9 || mes == 11) dias_no_mes = 30;  //meses com 30 dias
 
             printf("\n");
             printf("valor medio vendido por dia: %.2f reais\n", total_vendedor[i] / dias_no_mes);
             printf("\n");
  
-            //Para mostrar quais são as porcentagens
+            //para mostrar quais são as porcentagens
             if (total_vendedor[i] <= 2000) {
                 printf("valor da comissao (5%%): %.2f reais\n\n", comissao_vendedor[i]);
             } else if (total_vendedor[i] < 5000) {

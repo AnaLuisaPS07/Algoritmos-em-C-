@@ -6,30 +6,30 @@ int main() {
     int i, num_lote, num_forno, dr, rt, grau, total_forno[5] = {0}, soma_graus[5] = {0}; 
     float pc;
     
-    // Solicita o número de lotes
+    //solicita o número de lotes
     printf("Entre com o numero de lotes produzidos: ");
     scanf("%d", &num_lote);
     printf("\n");
     
-    // Solicita os dados de cada lote
+    //solicita os dados de cada lote
     printf("Entre com uma linha para cada lote produzido com os dados separados por um espaco em branco e na seguinte ordem: numero do forno, percentual de carbono (PC), dureza Rockwell (DR) e resistencia a tracao (RT)\n");
     printf("\n");
 
-    // Arrays para armazenar os graus de pureza de cada lote e o forno correspondente
+    //armazena os graus de pureza de cada lote e o forno correspondente
     int graus[num_lote], fornos[num_lote];
 
-    // Ler os dados de cada lote
+    //ler os dados de cada lote
     for(i = 0; i < num_lote; i++) {
         printf("Lote %d:  ", i + 1);
         scanf("%d %f %d %d", &num_forno, &pc, &dr, &rt);   
-        fornos[i] = num_forno; // Armazenar o número do forno
+        fornos[i] = num_forno; //armazena o número do forno
 
-        // Inicia o grau de pureza
+        //inicia o grau de pureza
         grau = 0;
 
-        // Verifica os testes para definir o grau de pureza
+        //verifica os testes para definir o grau de pureza
         if(pc < 7 && dr > 50 && rt > 80000) {
-            grau = 10; // Todos os testes atendidos
+            grau = 10; //todos os testes atendidos
         } else if(pc < 7 && dr > 50) {
             grau = 9;
         } else if(pc < 7 && rt > 80000) {
@@ -43,25 +43,25 @@ int main() {
         } else if(rt > 80000) {
             grau = 4;
         } else {
-            grau = 0; // Nenhum teste atendido
+            grau = 0; //nenhum teste atendido
         }
 
-        graus[i] = grau; // Armazena o grau de pureza do lote
+        graus[i] = grau; //armazena o grau de pureza do lote
 
-        // Atualiza a contagem de lotes e soma de graus por forno
+        //atualiza a contagem de lotes e soma de graus por forno
         total_forno[num_forno - 1]++;
         soma_graus[num_forno - 1] += grau;
         printf("\n");
     }
 
-    // Exibe os graus de pureza de cada lote
+    //exibe os graus de pureza de cada lote
     printf("Grau de pureza dos lotes produzidos\n");
     for(i = 0; i < num_lote; i++) {
         printf("Lote %d: %d\n", i + 1, graus[i]);
     }
     printf("\n");
 
-    // Exibe as estatísticas por forno
+    //exibe as estatísticas por forno
     printf("Estatisticas\n\n");
     for(i = 0; i < 5; i++) {
         if(total_forno[i] > 0) {
@@ -72,7 +72,7 @@ int main() {
     }
     printf("\n");
 
-    // Determina o(s) forno(s) com maior e menor grau de pureza
+    //determina o(s) forno(s) com maior e menor grau de pureza
     int maior_grau = 0, menor_grau = 10;
     for(i = 0; i < num_lote; i++) {
         if(graus[i] > maior_grau) {
@@ -83,7 +83,7 @@ int main() {
         }
     }
 
-    // Exibe os fornos que produziram lotes com o maior grau de pureza
+    //exibe os fornos que produziram lotes com o maior grau de pureza
     printf("Fornos que produziram lote(s) com maior grau de pureza (grau %d): ", maior_grau);
     for(i = 0; i < num_lote; i++) {
         if(graus[i] == maior_grau) {
@@ -92,7 +92,7 @@ int main() {
     }
     printf("\n");
 
-    // Exibe os fornos que produziram lotes com o menor grau de pureza
+    //exibe os fornos que produziram lotes com o menor grau de pureza
     printf("Fornos que produziram lote(s) com menor grau de pureza (grau %d): ", menor_grau);
     for(i = 0; i < num_lote; i++) {
         if(graus[i] == menor_grau) {

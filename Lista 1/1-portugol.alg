@@ -25,8 +25,6 @@ inicio
         Leia (n1, n2, n3, n4)
         Escreval (" ")
 
-
-
         // Inicialmente, assumimos que todas as notas são iguais
         se (n1 = n2) e (n2 = n3) e (n3 = n4) entao
             media <- (n1 * 2.5 + n2 * 2.5 + n3 * 2.5 + n4 * 2.5) / 10  //TODAS IGUAIS
@@ -42,7 +40,6 @@ inicio
                 senao
                     media <- (n1 * 4 + n2 * 2 + n3 * 2 + n4 * 2) / 10
                 fimse
-
 
             senao
                 // Se n2 é a maior
@@ -75,10 +72,7 @@ inicio
             fimse
         fimse
 
-
         mediaAcumulada <- mediaAcumulada + media
-
-
 
         se (c = 1) entao
             maiorMedia <- media
@@ -98,10 +92,6 @@ inicio
         Escreval (" ")
 
     FimEnquanto
-
-
-
-
 
     mediaGeral <- mediaAcumulada / turma
     Escreval ("Media geral da turma: ", mediaGeral)

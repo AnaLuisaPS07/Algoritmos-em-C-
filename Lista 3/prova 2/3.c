@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-//Função recursiva com bubble sort
+//função recursiva com bubble sort
 void bubbleSort(int arr[], int n) {
     if (n == 1) {
         return;
